@@ -177,7 +177,7 @@ class OtherOpers:
             send_message(message = "\n".join(errors), success = tp, service = param.get_string("name") or param.get_string() or  "PAQLang")        
         return ['success']    
 
-    async def single_send_error(pgm, param, p_queue, in_queue = None, out_queue = None):
+    async def single_send_errors(pgm, param, p_queue, in_queue = None, out_queue = None):
         """Отправить сообщение об ошибке
         
         Входная очередь сообщение
