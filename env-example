@@ -7,9 +7,9 @@ LOG_PATH = "/tmp/log/"
 # S3_URL=''
 # S3_BUCKET_NAME=''
 
-# Отправить сообщение в telegram командой "send_error и send_success"
+# Отправить сообщение в telegram командой "send_errors и send_success"
 # TELEGRAM_TOKEN=''
 # TELEGRAM_CHAT=''
 
-# Отправлять сообщения в teams командой "send_error и send_success"
+# Отправлять сообщения в teams командой "send_errors и send_success"
 # TEAMS_WEBHOOK=""
