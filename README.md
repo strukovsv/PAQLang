@@ -31,7 +31,7 @@ Python Async Queue Language
 # Сохранить в файле oracle
 - save: oracle
 
-# Проанализировать файл Win_ArgMonitor лога
+# Проанализировать файл names лога
 - in: /app/pgm/data/monitor.yaml
 - freads
 - to_json: text
