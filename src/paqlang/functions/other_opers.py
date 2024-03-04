@@ -174,7 +174,7 @@ class OtherOpers:
                 else:        
                     errors.append(f'{elem}')
         if len(errors):        
-            send_message(message = "\n".join(errors), success = tp, service = param.get_string("name") or param.get_string() or  "PAQLang")        
+            await send_message(message = "\n".join(errors), success = tp, service = param.get_string("name") or param.get_string() or  "PAQLang")        
         return ['success']    
 
     async def single_send_errors(pgm, param, p_queue, in_queue = None, out_queue = None):
