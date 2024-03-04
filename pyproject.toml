@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "PAQLang"
+version = "0.0.1"
+authors = [
+  { name="Sergey Strukov", email="strukovsv@main.ru" },
+]
+description = "Python Async Queue Language"
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+  'PyYAML==6.0.1',
+  'environs==9.5.0',
+  'aiofiles==23.2.1']
+
+#[project.urls]
+#Homepage = "https://gitlabci.dpd.ru/dpd/argis/serviceapp/zilog-utils"
+#Issues = "https://gitlabci.dpd.ru/dpd/argis/serviceapp/zilog-utils/-/issues"

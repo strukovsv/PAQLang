@@ -1,0 +1,17 @@
+# Это файл запуска процесса на stage
+version: "3"
+
+services:
+
+  app:
+    build: .
+    volumes:
+      - ./src/.:/app/.
+      - ./log:/tmp/log
+      - ./tests/.:/tests
+    env_file:  .env-stage
+    
+    #command: bash -c "pip freeze"
+    
+    #command: bash -c "python -m pytest /tests/test* --log-cli-level=INFO"
+    command: bash -c "python -m pytest /tests/test_popers.py --log-cli-level=INFO"
