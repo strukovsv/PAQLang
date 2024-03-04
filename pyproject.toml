@@ -17,10 +17,15 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-  'PyYAML==6.0.1',
-  'environs==9.5.0',
-  'aiofiles==23.2.1']
+'aiofiles==23.2.1',
+'PyYAML==6.0.1',
+'ruamel.yaml==0.18.6',
+'ruamel.yaml.clib==0.2.8',
+'ruamel.yaml.string==0.1.1',
+'requests==2.31.0',
+'boto3==1.34.54',
+'environs==9.5.0']
 
-#[project.urls]
-#Homepage = "https://gitlabci.dpd.ru/dpd/argis/serviceapp/zilog-utils"
-#Issues = "https://gitlabci.dpd.ru/dpd/argis/serviceapp/zilog-utils/-/issues"
+[project.urls]
+Homepage = "https://github.com/strukovsv/PAQLang"
+Issues = "https://github.com/strukovsv/PAQLang/issues"
