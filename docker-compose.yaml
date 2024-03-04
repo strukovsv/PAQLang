@@ -14,4 +14,4 @@ services:
     #command: bash -c "pip freeze"
     
     #command: bash -c "python -m pytest /tests/test* --log-cli-level=INFO"
-    command: bash -c "python -m pytest /tests/test_popers.py --log-cli-level=INFO"
+    command: bash -c "python -m pytest /tests/test_send_errors.py --log-cli-level=INFO"

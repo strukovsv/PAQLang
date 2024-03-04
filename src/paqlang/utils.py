@@ -9,6 +9,7 @@ import decimal
 from datetime import date, datetime, timedelta
 from typing import Any
 import requests
+import httpx
 
 import botocore
 from boto3.session import Session
@@ -259,7 +260,7 @@ def save_object(value_dict: dict, filename: str, desc: str = None, log_func = No
             _desc = f'({desc})' if desc else ""
             log_func(f' {filename}{_desc}: {print_dict_json(value_dict)}')
 
-def telegram(message: str, token: str = None, chats: list = None, success: bool = None):
+async def telegram(message: str, token: str = None, chats: list = None, success: bool = None):
     """Отправить сообщение в телеграм
 
     :param str parse_message: отправляемое сообщение
@@ -274,11 +275,24 @@ def telegram(message: str, token: str = None, chats: list = None, success: bool 
                 emoji = ('%F0%9F%98%83' if success else '%F0%9F%98%A1') if success is not None else None
                 for message in [emoji, message]:
                     if message is not None:
-                        telegram_message = f"https://api.telegram.org/bot{_token}/sendMessage?chat_id={chat_id}&text={message}&parse_mode=HTML"
-                        logger.debug(f'send to telegram message: "{telegram_message}"')
-                        requests.get(telegram_message)
+                        async with httpx.AsyncClient() as client:
+                            try:
+                                telegram_url = f"https://api.telegram.org/bot{_token}/sendMessage"
+                                telegram_param = {
+                                    "chat_id": chat_id,
+                                    "text": message,
+                                    "parse_mode": "HTML",
+                                }    
+                                response =  await client.get(f"{telegram_url}", params = telegram_param)
+                                # Если код возврата, ошибка, то поднять ошибку
+                                response.raise_for_status()
+                                logger.debug(f'send to telegram message: "{message}"')
+                            except httpx.HTTPError as exc:
+                                # Не поднимать ошибку, если нет доступа к телеграмму
+                                logger.error(f'HTTP Exception for "{exc.request.url}" - "{exc}"')
 
-def teams(message: str, teams_url: str = None, success: bool = None):
+
+async def teams(message: str, teams_url: str = None, success: bool = None):
     """Отправить сообщение в teams
 
     :param str parse_message: сообщение
@@ -320,7 +334,7 @@ def teams(message: str, teams_url: str = None, success: bool = None):
         # Отправить сообщение               
         requests.post(url = _teams_url, json = js_message)
 
-def send_message(message: str = None, success: int = None, service: str = None):
+async def send_message(message: str = None, success: int = None, service: str = None):
     """Отправить сообщение пользователю, в телеграм или teams
 
     :param str message: сообщение, defaults to None
@@ -334,9 +348,9 @@ def send_message(message: str = None, success: int = None, service: str = None):
                 "===================================", 
                 _message])
         # Отправить сообщение в telegram       
-        telegram(message = _message, success = success)
+        await telegram(message = _message, success = success)
         # Отправить сообщение в teams
-        teams(message = _message, success = success)
+        await teams(message = _message, success = success)
         if success is None or success:
             logger.info(_message.replace("\n", " "))
         else:    
