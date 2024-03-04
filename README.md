@@ -19,7 +19,7 @@ Python Async Queue Language
 ## Пример обработки текстов
 
 ```
-# Прочитать файл лога oracle
+# Задать имя файла лога oracle
 - in: /app/pgm/data/oracle.yaml
 # Прочитать файл и положить содержимое в очередь
 # {"filename": , "text": }
@@ -32,10 +32,10 @@ Python Async Queue Language
 - save: oracle
 
 # Проанализировать файл Win_ArgMonitor лога
-- in: /app/pgm/data/WIN_ArgMonitor.yaml
+- in: /app/pgm/data/monitor.yaml
 - freads
 - to_json: text
 # Вытащить значение из атрибута line
 - attr: line
-- save: WIN_ArgMonitor
+- save: monitor
 ```
