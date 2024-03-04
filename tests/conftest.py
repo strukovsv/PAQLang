@@ -1,5 +1,10 @@
 import pytest
 
+# Стандартное логирование
+import logging
+# Погасить INFO сообщения от httpx
+logging.getLogger('httpx').setLevel(logging.WARNING)
+
 from paqlang import pgm, get_json
 
 @pytest.fixture()

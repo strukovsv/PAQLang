@@ -286,7 +286,7 @@ async def telegram(message: str, token: str = None, chats: list = None, success:
                                 response =  await client.get(f"{telegram_url}", params = telegram_param)
                                 # Если код возврата, ошибка, то поднять ошибку
                                 response.raise_for_status()
-                                logger.debug(f'send to telegram message: "{message}"')
+                                logger.debug(f'send message to telegram')
                             except httpx.HTTPError as exc:
                                 # Не поднимать ошибку, если нет доступа к телеграмму
                                 logger.error(f'HTTP Exception for "{exc.request.url}" - "{exc}"')
@@ -332,7 +332,15 @@ async def teams(message: str, teams_url: str = None, success: bool = None):
             ]
         }     
         # Отправить сообщение               
-        requests.post(url = _teams_url, json = js_message)
+        async with httpx.AsyncClient() as client:
+            try:
+                response =  await client.post(f"{_teams_url}", json = js_message)
+                # Если код возврата, ошибка, то поднять ошибку
+                response.raise_for_status()
+                logger.debug(f'send message to teams')
+            except httpx.HTTPError as exc:
+                # Не поднимать ошибку, если нет доступа к teams
+                logger.error(f'HTTP Exception for "{exc.request.url}" - "{exc}"')
 
 async def send_message(message: str = None, success: int = None, service: str = None):
     """Отправить сообщение пользователю, в телеграм или teams
