@@ -21,14 +21,16 @@ class IoOpers:
         path:str или param:str - корневой маршрут поиска файлов
         regex:str - шаблон отбора файлов, если не задан, то все файлы
         """
-        path_str = param.get_string("path") or param.get_string()
         regex = param.get_string("regex")
-        for root, dirs, files in os.walk(path_str):
-            for file_name in [os.path.join(root, name) for name in files]:
-                if regex:
-                    if not re.match(regex, file_name):
-                        continue
-                out_queue.append(file_name)
+        while len(in_queue):
+            # Получить файл
+            path = in_queue.pop(0)
+            if isinstance(path, str):
+                for root, dirs, files in os.walk(path):
+                    for file_name in [os.path.join(root, name) for name in files]:
+                        if regex and not re.match(regex, file_name):
+                                continue
+                        out_queue.append(file_name)
         return ['success']
 
     async def multiple_freads(pgm, param, p_queue, in_queue = None, out_queue = None):
@@ -42,7 +44,9 @@ class IoOpers:
             # Получить файл
             file_name = in_queue.pop(0)
             if isinstance(file_name, str):
-                out_queue.append({"fname": file_name, "text": await aio_reads(file_name = file_name, encoding = encoding)})
+                out_queue.append({
+                    "path": file_name, 
+                    "text": await aio_reads(file_name = file_name, encoding = encoding)})
         return ['success']
 
     async def single_to_json(pgm, param, p_queue, in_queue = None, out_queue = None):

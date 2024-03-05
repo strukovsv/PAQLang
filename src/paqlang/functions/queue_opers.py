@@ -199,3 +199,16 @@ class QueueOpers:
         out_queue.extend(list(set(__in_queue)))
         return ['success']
 
+    async def single_expand(pgm, param, p_queue, in_queue = None, out_queue = None):
+        """Расширить подмассивы
+
+        in_queue - входная очередь
+        param - добавляемое значение в очередь
+        """
+        # Скопировать очередь
+        for item in in_queue:
+            if isinstance(item, list):
+                out_queue.extend(item)
+            else:    
+                out_queue.append(item)
+        return ['success']
