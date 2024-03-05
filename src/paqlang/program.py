@@ -14,6 +14,7 @@ from .functions.bool_opers import BoolOpers
 from .functions.control_opers import ControlOpers
 from .functions.io_opers import IoOpers
 from .functions.dict_opers import DictOpers
+from .functions.gitlab_opers import GitlabOpers
 
 import inspect
 
@@ -60,7 +61,8 @@ class Pgm:
             ControlOpers, 
             IoOpers,
             BoolOpers,
-            DictOpers]:
+            DictOpers,
+            GitlabOpers]:
             self.append_opers(in_class = cls)
 
     def append_macros(self, macros:dict):
