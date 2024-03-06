@@ -1,12 +1,10 @@
 import asyncio
-from paqlang.utils import aio_reads
 
+from paqlang.utils import aio_reads
 from .gitlab_opers import git_pool
 
 import cx_Oracle_async
 import cx_Oracle
-
-from paqlang import get_param
 
 import logging
 logger = logging.getLogger(__name__)
