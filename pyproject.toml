@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 
 name = "PAQLang"
-version = "0.0.5"
+version = "0.0.6"
 
 authors = [
   { name="Sergey Strukov", email="strukovsv@main.ru" },
@@ -16,9 +16,21 @@ readme = "README.md"
 requires-python = ">=3.11"
 
 classifiers = [
-    "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
+  # How mature is this project? Common values are
+  #   3 - Alpha
+  #   4 - Beta
+  #   5 - Production/Stable
+  "Development Status :: 4 - Beta",
+
+  # Indicate who your project is intended for
+  "Intended Audience :: Developers",
+  "Topic :: Software Development :: Build Tools",
+
+  # Pick your license as you wish (see also "license" above)
+  "License :: OSI Approved :: MIT License",
+
+  # Specify the Python versions you support here.
+  "Programming Language :: Python :: 3.11",
 ]
 
 dependencies = [
