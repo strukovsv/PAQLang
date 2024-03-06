@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 
 name = "PAQLang"
-version = "0.0.4"
+version = "0.0.5"
 
 authors = [
   { name="Sergey Strukov", email="strukovsv@main.ru" },
