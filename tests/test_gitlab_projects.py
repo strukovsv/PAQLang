@@ -1,7 +1,7 @@
 import pytest
 
-def test_1(main, request):
-  pgm = main(text = """
+def test_1(main_gitlab, request):
+  pgm = main_gitlab(text = """
 - options:
     - in: 
         # Кол-во потоков обработки операций gitlab и oracle
@@ -17,8 +17,8 @@ def test_1(main, request):
 """)
   assert len(pgm.queue) > 1
 
-def test_2(main, request):
-  pgm = main(text = """
+def test_2(main_gitlab, request):
+  pgm = main_gitlab(text = """
 - options:
     - in: 
         # Кол-во потоков обработки операций gitlab и oracle
@@ -36,8 +36,8 @@ def test_2(main, request):
 """)
   assert len(pgm.queue) == 1
 
-def test_3(main, request):
-  pgm = main(text = """
+def test_3(main_gitlab, request):
+  pgm = main_gitlab(text = """
 - options:
     - in: 
         # Кол-во потоков обработки операций gitlab и oracle
@@ -53,8 +53,8 @@ def test_3(main, request):
 """)
   assert len(pgm.queue) > 0
 
-def test_4(main, request):
-  pgm = main(text = """
+def test_4(main_gitlab, request):
+  pgm = main_gitlab(text = """
 - options:
     - in: 
         # Кол-во потоков обработки операций gitlab и oracle

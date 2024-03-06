@@ -1,7 +1,7 @@
 import pytest
 
-def test_1(main, request):
-  pgm = main(text = """
+def test_1(main_gitlab, request):
+  pgm = main_gitlab(text = """
 - options:
     - in: 
         # Подключение к gitlab
@@ -14,8 +14,8 @@ def test_1(main, request):
     - print: tags
 """)
 
-def test_2(main, request):
-  pgm = main(text = """
+def test_2(main_gitlab, request):
+  pgm = main_gitlab(text = """
 - options:
     - in: 
         # Подключение к gitlab
@@ -29,8 +29,8 @@ def test_2(main, request):
     - print: tags
 """)
 
-def test_3(main, request):
-  pgm = main(text = """
+def test_3(main_gitlab, request):
+  pgm = main_gitlab(text = """
 - options:
     - in: 
         # Подключение к gitlab

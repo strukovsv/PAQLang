@@ -1,7 +1,7 @@
 import pytest
 
-def test_1(main, request):
-  pgm = main(text = """
+def test_1(main_gitlab, request):
+  pgm = main_gitlab(text = """
 - options:
     - in: 
         # Кол-во потоков обработки операций gitlab
@@ -20,8 +20,8 @@ def test_1(main, request):
     - print         
 """)
 
-def test_2(main, request):
-  pgm = main(text = """
+def test_2(main_gitlab, request):
+  pgm = main_gitlab(text = """
 - options:
     - in: 
         # Кол-во потоков обработки операций gitlab
