@@ -18,6 +18,8 @@ permissions:
 jobs:
   deploy:
 
+    environment: build
+    
     runs-on: ubuntu-latest
 
     steps:
