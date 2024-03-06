@@ -6,7 +6,8 @@ import logging
 # Погасить INFO сообщения от httpx
 logging.getLogger('httpx').setLevel(logging.WARNING)
 
-from paqlang import pgm, get_json
+from paqlang.program import pgm
+from paqlang.utils import get_json
 
 @pytest.fixture()
 def arr_ints():
