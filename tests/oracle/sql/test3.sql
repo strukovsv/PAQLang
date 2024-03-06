@@ -1,0 +1,1 @@
+select 'NONE' code from dual

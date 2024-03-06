@@ -15,6 +15,15 @@ RUN apt-get update \
 
 ENV LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8
 
+COPY instantclient-basic-linux.x64-19.6.0.0.0dbru.zip /tmp/
+
+WORKDIR /opt/oracle
+
+RUN unzip /tmp/instantclient-basic-linux.x64-19.6.0.0.0dbru.zip \
+  && rm /tmp/instantclient-basic-linux.x64-19.6.0.0.0dbru.zip \
+  && echo /opt/oracle/instantclient_19_6 >/etc/ld.so.conf.d/oracle-instantclient.conf \
+  && ldconfig
+
 # Перейти в рабочий директорий
 WORKDIR /tests
 WORKDIR /app

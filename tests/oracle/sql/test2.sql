@@ -1,0 +1,1 @@
+select 'FAX' code from dual
