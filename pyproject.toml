@@ -51,6 +51,9 @@ all = [
 'cx_Oracle_async==0.3.3'
 ]
 
+[tool.setuptools.dynamic]
+version = { attr = "paqlang._version.__version__" }
+
 [project.urls]
 Homepage = "https://github.com/strukovsv/PAQLang"
 Issues = "https://github.com/strukovsv/PAQLang/issues"
