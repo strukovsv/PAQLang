@@ -1,5 +1,5 @@
 import asyncio
-from paqlang import aio_reads
+from paqlang.utils import aio_reads
 
 from .gitlab_opers import git_pool
 
