@@ -1,7 +1,7 @@
 import pytest
 
-def test_two(main, request):
-  pgm = main(text = """
+def test_two(main_gitlab, request):
+  pgm = main_gitlab(text = """
 - options:
     - in: 
         # Кол-во потоков обработки операций gitlab и oracle

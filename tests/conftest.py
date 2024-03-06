@@ -1,11 +1,13 @@
 import pytest
 
+
 # Стандартное логирование
 import logging
 # Погасить INFO сообщения от httpx
 logging.getLogger('httpx').setLevel(logging.WARNING)
 
 from paqlang import pgm, get_json
+from paqlang.ext.gitlab_opers import GitlabOpers
 
 @pytest.fixture()
 def arr_ints():
@@ -27,4 +29,14 @@ def main():
         # Создать объект управления выполнением задач, загрузив исходный текст программы
         # return pgm(pgm_code = js, pgm_libs = None, in_classes = [Gitlabs, Oracles], datas = datas, request = request)
         return pgm(pgm_code = js, pgm_libs = None, in_classes = [], datas = datas, request = request)
+    return __main
+
+@pytest.fixture()
+def main_gitlab():
+    def __main(text:str = None, js:dict = None, request = None, datas = None):
+        if not js:
+            js = get_json(text = text)
+        # Создать объект управления выполнением задач, загрузив исходный текст программы
+        # return pgm(pgm_code = js, pgm_libs = None, in_classes = [Gitlabs, Oracles], datas = datas, request = request)
+        return pgm(pgm_code = js, pgm_libs = None, in_classes = [GitlabOpers], datas = datas, request = request)
     return __main

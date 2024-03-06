@@ -1,7 +1,7 @@
 import pytest
 
-def test_1(main, request):
-  pgm = main(text = """
+def test_1(main_gitlab, request):
+  pgm = main_gitlab(text = """
 - options:
     - in: 
         # Подключение к gitlab
@@ -16,8 +16,8 @@ def test_1(main, request):
 """)
   assert len(pgm.queue) > 1
 
-def test_2(main, request):
-  pgm = main(text = """
+def test_2(main_gitlab, request):
+  pgm = main_gitlab(text = """
 - options:
     - in: 
         # Подключение к gitlab
