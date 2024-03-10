@@ -6,8 +6,8 @@ on:
     branches:
       - main
       - master
-    paths:
-      - '.github/workflows/release.yml'
+    # paths:
+    #   - '.github/workflows/release.yml'
 
 jobs:
 
