@@ -1,5 +1,4 @@
 import re
-# Стандартное логирование
 import logging
 
 from .data import mems
@@ -8,6 +7,7 @@ from .data import mems
 logger = logging.getLogger(__name__)
 
 def list2dict(params_as_list: list) -> dict:
+    """Список в словарь"""
     __dict = {}
     for elem in params_as_list:
         if isinstance(elem, dict):
