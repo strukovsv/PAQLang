@@ -1,3 +1,15 @@
+## [1.0.4](https://github.com/strukovsv/PAQLang/compare/v1.0.3...v1.0.4) (2024-03-10)
+
+
+### ci
+
+* Update python-publish.yml ([c3c29de](https://github.com/strukovsv/PAQLang/commit/c3c29de02ea745c12b014507a1277f8921f64d6b))
+* Update release.yml ([fb1e35c](https://github.com/strukovsv/PAQLang/commit/fb1e35c722c78a21948079e35479d754f876dca5))
+
+### style
+
+* program.py ([fe15bd6](https://github.com/strukovsv/PAQLang/commit/fe15bd671db589eecf60eb537dd6a12bb36fb3b9))
+
 ## [1.0.3](https://github.com/strukovsv/PAQLang/compare/v1.0.2...v1.0.3) (2024-03-10)
 
 
