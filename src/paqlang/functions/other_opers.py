@@ -33,7 +33,7 @@ class OtherOpers:
             group = [param.get_string()]
         else:
             group = None    
-        file_name = param.get_string("file") or (file_temp_path() + (f"/README.md {group}" if group else "/README.md"))
+        file_name = param.get_string("file") or ((file_temp_path() or "") + (f"/README.md {group}" if group else "/README.md"))
         for char in ['[', ']', "'"]:
             file_name = file_name.replace(char, "")
         if file_name:
