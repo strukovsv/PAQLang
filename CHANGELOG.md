@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/strukovsv/PAQLang/compare/v1.0.1...v1.0.2) (2024-03-10)
+
+
+### style
+
+* param.py ([972e25b](https://github.com/strukovsv/PAQLang/commit/972e25b96b30655a5050e6d37f5aa23eb8834cc7))
+
 ## [1.0.1](https://github.com/strukovsv/PAQLang/compare/v1.0.0...v1.0.1) (2024-03-10)
 
 
