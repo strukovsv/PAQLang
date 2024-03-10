@@ -4,9 +4,9 @@ import logging
 def test_one(main, request):
   pgm = main(text = '''
 - in:
-  - /tests/main/data/lib1.yaml
-  - /tests/main/data/lib2.yml
-  - /tests/main/data/lib3.json
+  - ./tests/main/data/lib1.yaml
+  - ./tests/main/data/lib2.yml
+  - ./tests/main/data/lib3.json
 - include             
 ''')
   logging.info(f'{pgm.macros}')
@@ -14,9 +14,9 @@ def test_one(main, request):
 def test_two(main, request):
   pgm = main(text = '''
 - in:
-  - /tests/main/data/lib1.yaml
-  - /tests/main/data/lib2.yml
-  - /tests/main/data/lib3.json
+  - ./tests/main/data/lib1.yaml
+  - ./tests/main/data/lib2.yml
+  - ./tests/main/data/lib3.json
 # Параллельно загрузить библиотеки             
 - include    
 - call: sub1

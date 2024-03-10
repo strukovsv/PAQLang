@@ -23,4 +23,4 @@ jobs:
           PYTHONPATH: "./src"
         run: |
           pip install pytest
-          python -m pytest ./tests/main/test*
+          python -m pytest ./src/tests/main/test*

@@ -13,8 +13,8 @@ services:
     
     #command: bash -c "pip freeze"
     
-    command: bash -c "python -m pytest /tests/* --log-cli-level=INFO"
+    #command: bash -c "python -m pytest /tests/* --log-cli-level=INFO"
     #command: bash -c "python -m pytest /tests/main/test* --log-cli-level=INFO"
     #command: bash -c "python -m pytest /tests/gitlab/test* --log-cli-level=INFO"
     #command: bash -c "python -m pytest /tests/oracle/test* --log-cli-level=INFO"
-    #command: bash -c "python -m pytest /tests/oracle/test_oracle_execute.py --log-cli-level=INFO"
+    command: bash -c "python -m pytest ./tests/main/test_call.py --log-cli-level=INFO"
