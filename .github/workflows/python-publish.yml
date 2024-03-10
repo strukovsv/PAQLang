@@ -19,26 +19,29 @@ permissions:
 jobs:
   deploy:
 
-    environment: build
+    # environment: build
     
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        fetch-tags: true
+        fetch-depth: 0
     - name: Set up Python
       uses: actions/setup-python@v3
       with:
-        python-version: '3.x'
+        python-version: '3.11'
     - name: Get version and tag
       run: |
-        echo "LATEST_TAG=$(git describe --tag --abbrev=0 | cut -c 2-)" >> "$GITHUB_ENV"
-    #   echo "RELEASE: ${{ env.LATEST_TAG }}"
-    # - name: Install dependencies
-    #   run: |
-    #     python -m pip install --upgrade pip
-    #     pip install build
-    # - name: Build package
-    #   run: python -m build
+        echo "LAST_VERSION=$(git describe --tag --abbrev=0 | cut -c 2-)" >> "$GITHUB_ENV"
+        echo "RELEASE: ${{ env.LAST_VERSION }}"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install build
+    - name: Build package
+      run: python -m build
     # - name: Publish package
     #   uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
     #   with:
