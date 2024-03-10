@@ -11,7 +11,7 @@ main:
 #   sleep: 0.4
 - lib:
     # Загрузить библиотеки из файла
-    - in: "./tests/main/data/lib1.yaml"
+    - in: "/tests/main/data/lib1.yaml"
     - include
 - stage1:
     stg1:
@@ -61,7 +61,7 @@ main:
     # sub2:                                  
     #   sleep: 0.4
     # Загрузить библиотеки из файла
-    - in: "./tests/main/data/lib1.yaml"
+    - in: "/tests/main/data/lib1.yaml"
     - include
 - stage1:
     stg1:
