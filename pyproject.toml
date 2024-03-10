@@ -52,7 +52,7 @@ all = [
 ]
 
 [tool.setuptools.dynamic]
-version = { attr = "paqlang._version.__version__" }
+version = { attr = "paqlang._version.VERSION" }
 
 [project.urls]
 Homepage = "https://github.com/strukovsv/PAQLang"
