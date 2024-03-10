@@ -4,12 +4,12 @@ name: Lint
 on:  # yamllint disable-line rule:truthy
   workflow_dispatch:
 
-  push:
-    paths-ignore:
-    - '.github/workflows/*'
-  pull_request:
-    paths-ignore:
-    - '.github/workflows/*'
+  # push:
+  #   paths-ignore:
+  #   - '.github/workflows/*'
+  # pull_request:
+  #   paths-ignore:
+  #   - '.github/workflows/*'
 
 jobs:
   build:
