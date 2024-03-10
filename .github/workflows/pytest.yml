@@ -20,7 +20,7 @@ jobs:
           pip install -r requirements.txt
       - name: Test with pytest
         env: 
-          ENV PYTHONPATH: "/app"
+          PYTHONPATH: "./app"
         run: |
           pip install pytest
           python -m pytest ./tests/main/test*
