@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/strukovsv/PAQLang/compare/v1.0.2...v1.0.3) (2024-03-10)
+
+
+### style
+
+* program.py ([6f7dec6](https://github.com/strukovsv/PAQLang/commit/6f7dec6fd63d81c9fb3123d56802e541716ac9c2))
+
 ## [1.0.2](https://github.com/strukovsv/PAQLang/compare/v1.0.1...v1.0.2) (2024-03-10)
 
 
