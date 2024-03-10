@@ -1,5 +1,7 @@
 import asyncio
 import datetime
+import inspect
+import logging
 
 from .utils import save_object
 from .param import Param
@@ -15,10 +17,6 @@ from .functions.control_opers import ControlOpers
 from .functions.io_opers import IoOpers
 from .functions.dict_opers import DictOpers
 
-import inspect
-
-# Стандартное логирование
-import logging
 # Установить текущи логгер
 logger = logging.getLogger(__name__)
 
