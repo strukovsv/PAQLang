@@ -2,6 +2,8 @@
 
 Python Async Queue Language
 
+[![Super-Linter](https://github.com/strukovsv/PAQLang/actions/workflows/lint.yml/badge.svg)](https://github.com/marketplace/actions/super-linter)
+
 ## Содержание
 
 - [PAQLang](#paqlang)
