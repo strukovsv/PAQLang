@@ -1,3 +1,14 @@
+## [1.0.1](https://github.com/strukovsv/PAQLang/compare/v1.0.0...v1.0.1) (2024-03-10)
+
+
+### ci
+
+* Update release.yml ([5d1489f](https://github.com/strukovsv/PAQLang/commit/5d1489f14964a190e814ed853f5ad5502c078152))
+
+### style
+
+* data.py ([32ce6aa](https://github.com/strukovsv/PAQLang/commit/32ce6aa58f4ff95cc987687073389e3b8cc889ab))
+
 # 1.0.0 (2024-03-10)
 
 
