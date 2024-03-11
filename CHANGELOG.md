@@ -1,3 +1,32 @@
+## [1.0.5](https://github.com/strukovsv/PAQLang/compare/v1.0.4...v1.0.5) (2024-03-11)
+
+
+### ci
+
+* Create pytest.yml ([cf5d414](https://github.com/strukovsv/PAQLang/commit/cf5d414f96574e7b55ca163edd5074eec583c406))
+* Update pytest.yml ([56e68e6](https://github.com/strukovsv/PAQLang/commit/56e68e6dadf0f1406ff63db0a7bce88ba519b932))
+* Update pytest.yml ([103cbf7](https://github.com/strukovsv/PAQLang/commit/103cbf7fdb27077e6803962e28f2fa307f05ce93))
+* Update pytest.yml ([89f648d](https://github.com/strukovsv/PAQLang/commit/89f648d19077c2e0c177de9d9bec187cd0460c83))
+* Update pytest.yml ([78f9333](https://github.com/strukovsv/PAQLang/commit/78f93337b034d93fe45c0a44a236b807bc2b70af))
+* Update pytest.yml ([f37946e](https://github.com/strukovsv/PAQLang/commit/f37946eb7e7571818d31525d0bfcb2099968768d))
+* Update pytest.yml ([ab0d441](https://github.com/strukovsv/PAQLang/commit/ab0d4413649d548264dd877f8e8dbd1ca1884267))
+
+### docs
+
+* Delete changelog.md ([5f8e434](https://github.com/strukovsv/PAQLang/commit/5f8e434a6f2bb2801188883277da2b8dacec172b))
+* readme ([1a3411d](https://github.com/strukovsv/PAQLang/commit/1a3411dcf69da224e179793298b9d5d866ccc45e))
+* Update README.md ([adca9ee](https://github.com/strukovsv/PAQLang/commit/adca9ee05c853211dc4367b2c7985c2a3b6fb500))
+* Update README.md ([a3c8592](https://github.com/strukovsv/PAQLang/commit/a3c85929925f21547c9e649ab597cc606716d8fe))
+
+### fix
+
+* заменить регистр в имени файла __init__.py ([27ce7de](https://github.com/strukovsv/PAQLang/commit/27ce7de5658ae464ca55226066567454b06d010a))
+
+### test
+
+* отложил тесты с файлами ([29b347b](https://github.com/strukovsv/PAQLang/commit/29b347bc3f86c7718ec282d970d41dbc1fa147a3))
+* подправил тесты. Временно исключил временные файлы ([ff8bda1](https://github.com/strukovsv/PAQLang/commit/ff8bda10bdc2388ccf9e48d2a90a3cfb1f322c5a))
+
 ## [1.0.4](https://github.com/strukovsv/PAQLang/compare/v1.0.3...v1.0.4) (2024-03-10)
 
 
