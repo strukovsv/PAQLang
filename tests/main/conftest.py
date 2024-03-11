@@ -24,10 +24,7 @@ def arr_dict_strings():
 @pytest.fixture()
 def main():
     def __main(text:str = None, js:dict = None, request = None, datas = None):
-        if not js:
-            js = get_json(text = text)
         # Создать объект управления выполнением задач, загрузив исходный текст программы
-        # return pgm(pgm_code = js, pgm_libs = None, in_classes = [Gitlabs, Oracles], datas = datas, request = request)
-        return pgm(pgm_code = js, pgm_libs = None, in_classes = [], datas = datas, request = request)
+        return pgm(pgm_code = js or text, pgm_libs = None, in_classes = [], datas = datas, request = request)
     return __main
 
