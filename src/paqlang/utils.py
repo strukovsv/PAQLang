@@ -51,7 +51,7 @@ def get_json_data(text:str) -> dict:
 
 def abs_file_path(file_name: str) -> str:
     """Получить абсолютный путь к файлу, с учетом относительного пути, запуска пакета"""
-    logger.info(f'{file_name=} {os.getcwd()=} {os.path.join(os.getcwd(), file_name)=}')
+    # logger.info(f'{file_name=} {os.getcwd()=} {os.path.join(os.getcwd(), file_name)=}')
     return os.path.join(os.getcwd(), file_name)
 
 def freads(file_name:str, encoding:str = None):
