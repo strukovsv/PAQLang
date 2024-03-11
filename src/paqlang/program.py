@@ -3,7 +3,7 @@ import datetime
 import inspect
 import logging
 
-from .utils import save_object
+from .utils import save_object, get_json_data
 from .param import Param
 from .data import mems
 
@@ -353,33 +353,35 @@ class Pgm:
         save_object(self.get_stack(short = False), f"{file_name} - stack")
 
 def pgm(pgm_code:dict, pgm_libs:dict = None, in_classes:list = None, datas:dict = None, request = None):
-    # Создать объект управления выполнением задач, загрузив исходный текст программы
-    # save_object(value_dict = pgm_code, filename = "pgm_code", tp = "json")
+    """Создать объект управления выполнением задач, загрузив исходный текст программы"""
     __pgm = Pgm()
     # Добавить обработчик
     if in_classes:
         for in_class in in_classes:
             __pgm.append_opers(in_class = in_class)
+    # Если код задач задан, как строка, преобразовать в объект
+    __pgm_code = get_json_data(pgm_code) if isinstance(pgm_code, str) else pgm_code
+    __pgm_libs = get_json_data(pgm_libs) if isinstance(pgm_libs, str) else pgm_libs
     # Разобрать код макросов    
-    if pgm_libs:        
-        if isinstance(pgm_libs, dict):
-            if "macros" in pgm_libs:
-                pgm_libs = pgm_libs["macros"]
+    if __pgm_libs:        
+        if isinstance(__pgm_libs, dict):
+            if "macros" in __pgm_libs:
+                __pgm_libs = __pgm_libs["macros"]
             # Добавит макросы в задачу
-            __pgm.append_macros(pgm_libs)
+            __pgm.append_macros(__pgm_libs)
     # Преобразовать исходный код    
-    if isinstance(pgm_code, dict):
-        if "macros" in pgm_code:
-            __pgm.append_macros(pgm_code["macros"])
-        if "main" in pgm_code:
-            pgm_code = pgm_code["main"]
+    if isinstance(__pgm_code, dict):
+        if "macros" in __pgm_code:
+            __pgm.append_macros(__pgm_code["macros"])
+        if "main" in __pgm_code:
+            __pgm_code = __pgm_code["main"]
     # Установить начальные переменные
     mems.data.clear()
     if datas:
         for key, value in datas.items():
             mems.set_data(key, value)
-    # Запустить лавный модуль программы
-    result = asyncio.get_event_loop().run_until_complete(__pgm.aio_go(pgm = pgm_code))
+    # Запустить главный модуль программы
+    result = asyncio.get_event_loop().run_until_complete(__pgm.aio_go(pgm = __pgm_code))
     # if request:
     #     file_name = f'{request.node.module.__name__} {request.node.name}'
     #     # zilog_utils.save_object(result, f"{file_name} - result")
