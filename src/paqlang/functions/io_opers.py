@@ -2,7 +2,7 @@ import asyncio
 import re
 import datetime
 import os
-from ..utils import aio_reads, get_json
+from ..utils import aio_reads, get_json, get_json_data
 from .util_opers import get_attr
 
 from ..param import Param, get_param
@@ -37,16 +37,29 @@ class IoOpers:
         """Прочитать файл и положить содержимое в выходную очередь {fname, text}
 
         encoding:str, если не задано, то param:str - по умолчанию utf-8
-        кодировка для windows файлов cp1251
+          кодировка для windows файлов cp1251
+        to_json = None, если указан атрибут, то файл преобразовать в объект и вернуть как массив
+        split:str = None, есил указан атрибут, то разбить текстовый файл на строки. 
+        Если указан символ разбиения, то разбить соответственно ему.  
         """
+        # Задать кодировку файла
         encoding = param.get_string("encoding") or param.get_string()
         while len(in_queue):
-            # Получить файл
+            # Получить имя файла
             file_name = in_queue.pop(0)
             if isinstance(file_name, str):
-                out_queue.append({
-                    "path": file_name, 
-                    "text": await aio_reads(file_name = file_name, encoding = encoding)})
+                # Асинхронно прочимтать файл
+                text = await aio_reads(file_name = file_name, encoding = encoding)
+                if "to_json" in param.dict:
+                    # Положить объект в очереь
+                    out_queue.extend(Param(get_json_data(text)).as_list())
+                elif "split" in param.dict and text:
+                    # Разбить на строки
+                    out_queue.extend([x for x in text.split(param.get_string("split") or "\n") if isinstance(x, str) and len(x) > 0])
+                else:        
+                    out_queue.append({
+                        "path": file_name, 
+                        "text": text})
         return ['success']
 
     async def single_to_json(pgm, param, p_queue, in_queue = None, out_queue = None):
