@@ -1,3 +1,22 @@
+# [1.1.0](https://github.com/strukovsv/PAQLang/compare/v1.0.5...v1.1.0) (2024-03-11)
+
+
+### chore
+
+* убрал отладочную информацию ([30df899](https://github.com/strukovsv/PAQLang/commit/30df899c6ebaf968a5032855a606d32025419b32))
+
+### ci
+
+* pytest path ([f8a0576](https://github.com/strukovsv/PAQLang/commit/f8a057695772d22545dd502ef90642be0aa14b8f))
+
+### feat
+
+* добавил атрибуты to_json и split в функцию freads, поправил вычисление маршрутов файлов ([ad3b585](https://github.com/strukovsv/PAQLang/commit/ad3b585033ec7c237eca5a333daea28f57e1b1c8))
+
+### test
+
+* вывод пути к в лог файлам ([8112466](https://github.com/strukovsv/PAQLang/commit/8112466025db39b04943dd4983ef46a39fbb5cb8))
+
 ## [1.0.5](https://github.com/strukovsv/PAQLang/compare/v1.0.4...v1.0.5) (2024-03-11)
 
 
