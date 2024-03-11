@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/strukovsv/PAQLang/compare/v1.1.0...v1.2.0) (2024-03-11)
+
+
+### feat
+
+* если передан код программы как текст, то преобразовать в объект из JSON или YAML ([b043c43](https://github.com/strukovsv/PAQLang/commit/b043c43ef28aa825c81e4cfc51f5cb25be85087a))
+
 # [1.1.0](https://github.com/strukovsv/PAQLang/compare/v1.0.5...v1.1.0) (2024-03-11)
 
 
