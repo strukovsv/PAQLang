@@ -49,16 +49,27 @@ def get_json_data(text:str) -> dict:
         return yamlx.load(text)
         # return yaml.safe_load(text)
 
+def abs_file_path(file_name: str) -> str:
+    """Получить абсолютный путь к файлу, с учетом относительного пути, запуска пакета"""
+    # logger.info(f'{file_name=} {os.getcwd()=} {os.path.join(os.getcwd(), file_name)=}')
+    return os.path.join(os.getcwd(), file_name)
+
 def freads(file_name:str, encoding:str = None):
     """Обычное чтение файла
     """
-    with open(file_name, mode = 'r', encoding = encoding if encoding else "utf-8") as f:
+    with open(
+        abs_file_path(file_name), 
+        mode = 'r', 
+        encoding = encoding if encoding else "utf-8") as f:
         return f.read()
 
 async def aio_reads(file_name:str, encoding:str = None):
     """Асинхронное чтение файла
     """
-    async with aiofiles.open(file_name, mode = 'r', encoding = encoding if encoding else "utf-8") as f:
+    async with aiofiles.open(
+        abs_file_path(file_name), 
+        mode = 'r', 
+        encoding = encoding if encoding else "utf-8") as f:
         return await f.read()
 
 def get_json(file_name:str = None, text:str = None) -> dict:

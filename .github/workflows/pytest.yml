@@ -23,4 +23,5 @@ jobs:
           PYTHONPATH: "./src"
         run: |
           pip install pytest
-          python -m pytest ./tests/main/test*
+          cd src
+          python -m pytest ../tests/main/test* --log-cli-level=INFO
