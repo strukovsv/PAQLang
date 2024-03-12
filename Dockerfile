@@ -8,7 +8,7 @@ RUN apt-get update \
   && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
   && apt-get clean -y \
   && rm -rf /var/lib/apt/lists/* \
-  && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
+  && ln -snf "/usr/share/zoneinfo/$TZ" /etc/localtime \
   && echo "$TZ" > /etc/timezone \
   && sed -i -e 's/# \(en_US\.UTF-8 .*\)/\1/' /etc/locale.gen  \
   && locale-gen
