@@ -9,7 +9,7 @@ RUN apt-get update \
   && apt-get clean -y \
   && rm -rf /var/lib/apt/lists/* \
   && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
-  && echo $TZ > /etc/timezone \
+  && echo "$TZ" > /etc/timezone \
   && sed -i -e 's/# \(en_US\.UTF-8 .*\)/\1/' /etc/locale.gen  \
   && locale-gen
 
@@ -30,8 +30,8 @@ WORKDIR /app
 
 # Установить зависимости
 COPY requirements.txt ./
-RUN python -m pip install --upgrade pip 
-RUN pip install --verbose --no-cache-dir -r requirements.txt
+RUN python -m pip install --no-cache-dir --upgrade pip \
+  && pip install --verbose --no-cache-dir -r requirements.txt
 
 # Скопировать выполняемый код
 COPY ./src/. ./
