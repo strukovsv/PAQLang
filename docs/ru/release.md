@@ -2,11 +2,11 @@
 
 Must be one of the following:
 
-* **build**: Changes that affect the build system or external dependencies (Изменения влияющие на систему сборки или внешние зависимости)
+* **build**: Changes that affect the build tool or external dependencies (Изменения влияющие на систему сборки или внешние зависимости)
 * **ci**: Changes to our CI configuration files and scripts (Изменения в наших CI файлах или скриптах)
 * **docs**: Documentation only changes (Изменяется только документация)
 * **feat**: A new feature (Новая функцция)
-* **fix**: A bug fix (Исправлена ошибка)
+* **fix**: A bugfix (Исправлена ошибка)
 * **perf**: A code change that improves performance (Изменение кода, повышающее производительность)
 * **refactor**: A code change that neither fixes a bug nor adds a feature (Изменение кода которое не исправляет ошибку и не добавляет функцию)
 * **test**: Adding missing tests or correcting existing tests (Добавление отсутствующих тестов или исправление существующих тестов)
