@@ -1,6 +1,6 @@
 # PAQLang
 
-Python Async Queue Language 
+Python Async Queue Language
 
 [![Super-Linter](https://github.com/strukovsv/PAQLang/actions/workflows/lint.yml/badge.svg)](https://github.com/marketplace/actions/super-linter)
 [![Pytest](https://github.com/strukovsv/PAQLang/actions/workflows/pytest.yml/badge.svg)](https://github.com/strukovsv/PAQLang/tree/master/tests/main)
@@ -16,26 +16,27 @@ Python Async Queue Language
 
 ## Назначение
 
-* Пакет предназначен, для выполнения задач, с использованием асинхронных функций на языке Python. 
-* Пакет содержит встроенные функции работы с данными и возможность добавления новых функций
-* Код задачи представляет собой или JSON объект в Python или Yaml текст.
+- Пакет предназначен, для выполнения задач, с использованием асинхронных функций на языке Python.
+- Пакет содержит встроенные функции работы с данными и возможность добавления новых функций
+- Код задачи представляет собой или JSON объект в Python или Yaml текст.
 
 ## Install
 
-* Установка только встроенных функций 
+- Установка только встроенных функций
 
-**pip install PAQLang**
+  **pip install PAQLang**
 
-* Установка с пакетами работы Gitlab и Oracle
+- Установка с пакетами работы Gitlab и Oracle
 
-**pip install PAQLang[all]**
+  **pip install PAQLang[all]**
 
 ## Документация
+
 Документацию по встроенным функциям системы можно получить по [этой ссылке](./docs/ru/functions.md).
 
 ## Пример программы обработки текстов
 
-```
+```text
 # Пример обработки текстов
 import logging
 
