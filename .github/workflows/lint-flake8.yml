@@ -37,6 +37,10 @@ jobs:
         uses: py-actions/flake8@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Release
+        run: echo release 
+      
         # with:
         #   ignore: "F401"
         #   exclude: "src/ignoreme.py"
