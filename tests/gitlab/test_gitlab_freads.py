@@ -1,9 +1,8 @@
-import pytest
-
 def test_1(main, request):
-  pgm = main(text = """
+    main(
+        text="""
 - options:
-    - in: 
+    - in:
         # Кол-во потоков обработки операций gitlab
         tasks: 10
         # Подключение к gitlab
@@ -14,9 +13,10 @@ def test_1(main, request):
     - in:
       - ".gitignore"
       - ".gitlab-ci.yml"
-    # Прочитать два файла в два асинхронных потока         
+    # Прочитать два файла в два асинхронных потока
     - gitlab_freads:
       - ~options
-      - git_branch: master     
-    - print         
-""")
+      - git_branch: master
+    - print
+"""
+    )

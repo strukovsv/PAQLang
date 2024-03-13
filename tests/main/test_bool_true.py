@@ -1,6 +1,9 @@
-import pytest
-
 def test_main(main):
-    assert main(text = """
+    assert (
+        main(
+            text="""
 bool_true
-""").queue == [1]
+"""
+        ).queue
+        == [1]
+    )

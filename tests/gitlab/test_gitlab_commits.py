@@ -1,9 +1,8 @@
-import pytest
-
 def test_two(main, request):
-  pgm = main(text = """
+    main(
+        text="""
 - options:
-    - in: 
+    - in:
         # Кол-во потоков обработки операций gitlab и oracle
         tasks: 10
         # Подключение к gitlab
@@ -12,10 +11,10 @@ def test_two(main, request):
         git_repo: ${GIT_REPO}
 - stage:
 
-    - in: tests/2.133.0.0          
+    - in: tests/2.133.0.0
     - gitlab_commits:
       - ~options
       - since: "20240305"
     - print
-""")
-
+"""
+    )
