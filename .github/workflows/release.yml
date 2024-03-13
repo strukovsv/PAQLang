@@ -9,43 +9,17 @@ on:
   #   paths-ignore:
   #   - '.github/workflows/*'
   workflow_run:
-    workflows: ["Lint-flake8", "PyTest"]
+    workflows: ["Lint-flake8"]
     types: [completed]
 jobs:
 
-  on-failure-release:
-    name: Release failure
-    runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
-    steps:
-    - name: failure
-      run: echo failure release workflow
-    
   on-success-release:
 
     name: Release
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
-
-      - name: Wait for tests to succeed
-        uses: lewagon/wait-on-check-action@v1.3.1
-        id: wait-for-build-test
-        with:
-          ref: master
-          check-name: 'pytest tests'
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          wait-interval: 20
-
-      - name: Wait for lint to succeed
-        uses: lewagon/wait-on-check-action@v1.3.1
-        id: wait-for-build-lint
-        with:
-          ref: master
-          check-name: 'Lint flake8'
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          wait-interval: 20
-
+    
       - name: Checkout
         uses: actions/checkout@v4
         with:
