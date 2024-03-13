@@ -2,7 +2,7 @@
 
 Python Async Queue Language
 
-[![Super-Linter](https://github.com/strukovsv/PAQLang/actions/workflows/lint.yml/badge.svg)](https://github.com/marketplace/actions/super-linter)
+[![Super-Linter](https://github.com/strukovsv/PAQLang/actions/workflows/lint-flake8.yml/badge.svg)](https://github.com/marketplace/actions/python-flake8-lint)
 [![Pytest](https://github.com/strukovsv/PAQLang/actions/workflows/pytest.yml/badge.svg)](https://github.com/strukovsv/PAQLang/tree/master/tests/main)
 
 ## Содержание
@@ -68,7 +68,7 @@ def main():
 - attr: line
 
 # Распечатать результирующий список
-- print 
+- print
 #INFO:print: 10001
 #INFO:print: 4578
 #INFO:print: 7898

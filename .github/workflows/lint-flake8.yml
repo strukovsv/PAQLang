@@ -1,0 +1,45 @@
+---
+name: Lint-flake8
+
+on:  # yamllint disable-line rule:truthy
+  workflow_dispatch:
+
+  # push:
+  #   paths-ignore:
+  #   - '.github/workflows/*'
+  # pull_request:
+  #   paths-ignore:
+  #   - '.github/workflows/*'
+
+jobs:
+
+  flake8-lint:
+
+    name: Lint
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: read
+      # To report GitHub Actions status checks
+      statuses: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python environment
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: flake8 Lint
+        uses: py-actions/flake8@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # with:
+        #   ignore: "F401"
+        #   exclude: "src/ignoreme.py"
+        #   max-line-length: "100"
+        #   path: "src"
+        #   plugins: "flake8-bugbear==22.1.11 flake8-black"
