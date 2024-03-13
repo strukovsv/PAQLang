@@ -1,3 +1,32 @@
+## [1.2.1](https://github.com/strukovsv/PAQLang/compare/v1.2.0...v1.2.1) (2024-03-13)
+
+
+### chore
+
+* exclude CHANGELOG.md ([840c8af](https://github.com/strukovsv/PAQLang/commit/840c8af5526ca8f822e55c9b53e4b706537dde0e))
+* ignore changelog.md ([fd427be](https://github.com/strukovsv/PAQLang/commit/fd427befa26496fe0acaaf682bcb10e9fc542ae3))
+* markdown файлы подправил ([0758820](https://github.com/strukovsv/PAQLang/commit/0758820399a3d827b9616396c2a61dfe1c71a8da))
+* двойные кавычки !!! ([73a825b](https://github.com/strukovsv/PAQLang/commit/73a825b9700e6ac53fb0cf1e98a8f30710dac6ba))
+* исправлены ошибке в правописании ([69b4929](https://github.com/strukovsv/PAQLang/commit/69b492954b0e6a3630cc78be24a91b882c46da86))
+
+### ci
+
+* init lint flake8 ([0cbae1c](https://github.com/strukovsv/PAQLang/commit/0cbae1cd3e823e21b29591c623766a64ef6f6dfc))
+* Update lint-flake8.yml ([8fee2c7](https://github.com/strukovsv/PAQLang/commit/8fee2c76399c065878594e2bcdcdda7dd2322d02))
+* Update lint-flake8.yml ([3838f7c](https://github.com/strukovsv/PAQLang/commit/3838f7cf84caa16e38711e6f1cea48894da0d825))
+
+### docs
+
+* простой пример программмы ([0b6e0a0](https://github.com/strukovsv/PAQLang/commit/0b6e0a081bd0af907917f4ea057e70e592f2e02d))
+
+### style
+
+* flake python stage 2 ([c280458](https://github.com/strukovsv/PAQLang/commit/c28045874895170277adae0e870541d31ba8b084))
+* python flake8 stage 1 ([2214fd1](https://github.com/strukovsv/PAQLang/commit/2214fd1ff5fa536bca01dfdae961481c299ec1a2))
+* Update _version.py ([839921c](https://github.com/strukovsv/PAQLang/commit/839921ce8e569527afd095e6518d8c69bfb000e0))
+* Update _version.py ([3d68a9a](https://github.com/strukovsv/PAQLang/commit/3d68a9a47873780351a82894f7ed4b404f229f0e))
+* поправил test_call ([1f2fdf8](https://github.com/strukovsv/PAQLang/commit/1f2fdf8b9657d426db74065d508c29d47112b38a))
+
 # [1.2.0](https://github.com/strukovsv/PAQLang/compare/v1.1.0...v1.2.0) (2024-03-11)
 
 
