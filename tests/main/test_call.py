@@ -7,9 +7,9 @@ def test_call(main, request):
     pgm = main(
         text="""
 main:
-# sub1:                                  
+# sub1:
 #   sleep: 0.2
-# sub2:                                  
+# sub2:
 #   sleep: 0.4
 - lib:
     # Загрузить библиотеки из файла
@@ -30,11 +30,11 @@ main:
 def test_macros(main, request):
     pgm = main(
         text="""
-macros:               
+macros:
   sub1:
-    sub11:                                  
+    sub11:
       sleep: 0.2
-    sub12:                                  
+    sub12:
       sleep: 0.4
   sub2:
     sleep: 0.5
@@ -42,11 +42,11 @@ macros:
     sleep: 0.8
 main:
 - stage1:
-    stage11:           
+    stage11:
       call: sub1
-    stage12:           
+    stage12:
       call: sub2
-    stage13:           
+    stage13:
       call: sub3
 """,
         request=request,
@@ -59,16 +59,16 @@ main:
 def test_macros_include(main, request):
     pgm = main(
         text="""
-macros:               
-  sub1:                                  
+macros:
+  sub1:
     sleep: 0.1
-  sub2:                                  
+  sub2:
     sleep: 0.2
 main:
 - lib:
-    # sub1:                                  
+    # sub1:
     #   sleep: 0.2
-    # sub2:                                  
+    # sub2:
     #   sleep: 0.4
     # Загрузить библиотеки из файла
     - in: "../tests/main/data/lib1.yaml"
