@@ -7,6 +7,7 @@ __license__ = "MIT"
 __title__ = "PAQLang"
 __version__ = "1.0.1"
 
+
 def VERSION():
     """Получить версию пакета из переменной"""
     dev_version = os.environ.get("LAST_VERSION")
