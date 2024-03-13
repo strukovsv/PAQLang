@@ -8,14 +8,14 @@ import decimal
 from datetime import date, datetime  # noqa
 from typing import Any
 
-import aiofiles
-import yaml
-import httpx
+import aiofiles  # noqa
+import yaml  # noqa
+import httpx  # noqa
 
-from boto3.session import Session
+from boto3.session import Session  # noqa
 
-from ruamel.yaml.representer import RoundTripRepresenter
-from ruamel.yaml import YAML
+from ruamel.yaml.representer import RoundTripRepresenter  # noqa
+from ruamel.yaml import YAML  # noqa
 
 # Установить текущи логгер
 logger = logging.getLogger(__name__)
@@ -54,10 +54,10 @@ def get_json_data(text: str) -> dict:
         # return yaml.safe_load(text)
 
 
-def abs_file_path(file_name: str) -> str:
+def abs_file_path(file_name: str, path: str = None) -> str:
     """Получить абсолютный путь к файлу,
     с учетом относительного пути, запуска пакета"""
-    return os.path.join(os.getcwd(), file_name)
+    return os.path.join(path or os.getcwd(), file_name)
 
 
 def freads(file_name: str, encoding: str = None):

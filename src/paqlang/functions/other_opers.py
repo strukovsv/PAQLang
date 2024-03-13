@@ -1,8 +1,8 @@
 import logging
-
 import asyncio
-import aiofiles
-from ..utils import aio_get_json, send_message, file_temp_path
+import aiofiles  # noqa
+
+from ..utils import aio_get_json, send_message, abs_file_path
 from .util_opers import coalesce, get_condition
 
 from ..param import Param
@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 
 
 class OtherOpers:
+    """Сервисные операции"""
 
     async def single_opers(pgm, param, p_queue, in_queue=None, out_queue=None):
         """Вывести словарь операций"""
@@ -24,62 +25,103 @@ class OtherOpers:
     async def single_popers(
         pgm, param, p_queue, in_queue=None, out_queue=None
     ):
-        """Вывести словарь операций"""
-        if param.get_list("group"):
-            group = param.get_list("group")
-        elif param.get_string("group"):
-            group = [param.get_string("group")]
+        """Вывести словарь операций
+
+        group:[str|list] или param:str или None -
+          вывеcти только данные группы операций
+        path: = None - если указано, то вывести в файлы по данному маршруту"""
+        if param.get_list("groups"):
+            filter_groups = param.get_list("groups")
+        elif param.get_string("groups"):
+            filter_groups = [param.get_string("groups")]
         elif param.get_string():
-            group = [param.get_string()]
+            filter_groups = [param.get_string()]
         else:
-            group = None
-        file_name = param.get_string("file") or (
-            (file_temp_path() or "")
-            + (f"/README.md {group}" if group else "/README.md")
+            filter_groups = None
+        # Получить параметр вывода в файл
+        path = param.get_string("path")
+        # Получить спсиок всех операций
+        opers = []
+        opers += pgm.single_opers.values()
+        opers += pgm.multiple_opers.values()
+        # Получить список групп операций, с отбором по заданной группе
+        group_names = set(
+            [
+                oper["group"]
+                for oper in opers
+                if filter_groups is None or oper["group"] in filter_groups
+            ]
         )
-        for char in ["[", "]", "'"]:
-            file_name = file_name.replace(char, "")
-        if file_name:
-            async with aiofiles.open(
-                file_name, mode="w", encoding="utf-8"
-            ) as f:
-                opers = []
-                opers += pgm.single_opers.values()
-                opers += pgm.multiple_opers.values()
-                for group in sorted(
-                    list(
-                        set(
+        # Сделать массив групп
+        groups = [
+            {"group": group, "name": group.lower(), "opers": []}
+            for group in group_names
+        ]
+        for gr in groups:
+            # logger.info(gr)
+            # Для группы получить набор операций, отсортированных
+            oper_names = sorted(
+                [
+                    oper["name"]
+                    for oper in opers
+                    if oper["group"] == gr["group"]
+                ]
+            )
+            for oper_name in oper_names:
+                for oper in opers:
+                    if oper["name"] == oper_name:
+                        # logger.info(f"{oper=}")
+                        test = f"/tests/main/test_{oper_name}.py"
+                        oper_doc = "\n".join(
                             [
-                                oper["group"]
-                                for oper in opers
-                                if group is None or oper["group"] in group
+                                line.lstrip()
+                                for line in (oper["doc"] or "").split("\n")
                             ]
                         )
-                    )
-                ):
-                    logger.info(f"## {group}")
-                    await f.write(f"## {group}\n")
-                    for oper_name in sorted(
-                        [
-                            oper["name"]
-                            for oper in opers
-                            if oper["group"] == group
-                        ]
-                    ):
-                        for oper in [
-                            oper for oper in opers if oper["name"] == oper_name
-                        ]:
-                            logger.info(
-                                f'### {oper["name"]} {"(multiple)" if oper["multiple"] else ""}'  # noqa
+                        markdown = f"""
+---
+
+## **{oper_name}**
+
+```text
+{oper_doc}
+```
+
+[{test}]({test})
+"""
+                        oper["markdown"] = markdown
+                        gr["opers"].append(oper)
+        if path:
+            async with aiofiles.open(
+                abs_file_path("topic.md", path),
+                mode="w",
+                encoding="utf-8",
+            ) as ftopic:
+                await ftopic.write("# Functions\n\n")
+                gr_names = sorted(
+                    list(set([gr["opers"][0]["group_doc"] for gr in groups]))
+                )
+                for group_name in gr_names:
+                    for gr in groups:
+                        if gr["opers"][0]["group_doc"] == group_name:
+                            gr_doc = gr["opers"][0]["group_doc"]
+                            await ftopic.write(
+                                f'- [{gr_doc}]({gr["name"]}.md)\n'
                             )
-                            await f.write(
-                                f'### {oper["name"]} {"(multiple)" if oper["multiple"] else ""}\n'  # noqa
-                            )
-                            if oper["doc"]:
-                                await f.write("```\n")
-                                for line in oper["doc"].split("\n"):
-                                    await f.write(f"{line.strip()}\n")
-                                await f.write("```\n")
+                            async with aiofiles.open(
+                                abs_file_path(f'{gr["name"]}.md', path),
+                                mode="w",
+                                encoding="utf-8",
+                            ) as f:
+                                await f.write(f"# {gr_doc}\n\n")
+
+                                for oper in gr["opers"]:
+                                    await f.write(
+                                        f'- [{oper["name"]}](#{oper["name"].lower()})\n'  # noqa
+                                    )
+
+                                for oper in gr["opers"]:
+                                    await f.write(oper["markdown"])
         return ["success"]
 
     async def _print_message(pgm, param, p_queue, in_queue, out_queue, tp):

@@ -78,6 +78,7 @@ class Pgm:
                 name = fullname.replace("multiple_", "").replace("single_", "")
                 value = {
                     "group": in_class.__name__,
+                    "group_doc": in_class.__doc__,
                     "coroutine": coroutine,
                     "doc": coroutine.__doc__,
                     "name": name,

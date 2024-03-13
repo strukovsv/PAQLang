@@ -1,7 +1,7 @@
 import logging
 
-import cx_Oracle_async
-import cx_Oracle
+import cx_Oracle_async  # noqa
+import cx_Oracle  # noqa
 
 from paqlang.utils import aio_reads
 from .gitlab_opers import git_pool
@@ -43,6 +43,7 @@ pool = Pool()
 
 
 class OracleOpers:
+    """Oracle"""
 
     async def execute(
         pgm, param, p_queue, in_queue=None, out_queue=None, fetch=None

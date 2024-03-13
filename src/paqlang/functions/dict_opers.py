@@ -7,6 +7,7 @@ logger = logging.getLogger(__name__)
 
 
 class DictOpers:
+    """Операции со словарями"""
 
     def _plane(elem):
         if isinstance(elem, dict):
