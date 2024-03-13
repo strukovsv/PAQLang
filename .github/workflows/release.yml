@@ -19,6 +19,7 @@ jobs:
 
       - name: Wait for tests to succeed
         uses: lewagon/wait-on-check-action@v1.3.1
+        id: wait-for-build-test
         with:
           ref: master
           check-name: 'pytest tests'
@@ -27,6 +28,7 @@ jobs:
 
       - name: Wait for lint to succeed
         uses: lewagon/wait-on-check-action@v1.3.1
+        id: wait-for-build-lint
         with:
           ref: master
           check-name: 'Lint flake8'
