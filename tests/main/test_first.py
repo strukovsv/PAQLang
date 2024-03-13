@@ -1,21 +1,37 @@
-import pytest
-
 def test_empty(main):
-  assert main(text = """
+    assert (
+        main(
+            text="""
 - in
 - first
-""").queue == []
+"""
+        ).queue
+        == []
+    )
+
 
 def test_one(main):
-  assert main(text = """
+    assert (
+        main(
+            text="""
 - in:
   - 1
   - 2
   - 3
 - first
-""").queue == [1]
+"""
+        ).queue
+        == [1]
+    )
+
 
 def test_two(main, arr_ints):
-  assert main(datas = arr_ints, text = """
+    assert (
+        main(
+            datas=arr_ints,
+            text="""
 - first: ints
-""").queue == [0]
+""",
+        ).queue
+        == [0]
+    )

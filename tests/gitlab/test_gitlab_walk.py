@@ -1,9 +1,8 @@
-import pytest
-
 def test_1(main, request):
-  pgm = main(text = """
+    main(
+        text="""
 - options:
-    - in: 
+    - in:
         # Кол-во потоков обработки операций gitlab
         tasks: 10
         # Подключение к gitlab
@@ -13,17 +12,20 @@ def test_1(main, request):
 - stage:
     - in:
       - "Functions"
-      - "Procedures"       
+      - "Procedures"
     - gitlab_walk:
       - ~options
-      - git_branch: master     
-    - print         
-""")
+      - git_branch: master
+    - print
+"""
+    )
+
 
 def test_2(main, request):
-  pgm = main(text = """
+    main(
+        text="""
 - options:
-    - in: 
+    - in:
         # Кол-во потоков обработки операций gitlab
         tasks: 10
         # Подключение к gitlab
@@ -33,10 +35,11 @@ def test_2(main, request):
 - stage:
     - in:
       - "Functions"
-      - "Procedures"       
+      - "Procedures"
     - gitlab_walk:
       - ~options
-      - git_branch: master     
+      - git_branch: master
       - regex: "^.+/tmp_.+$"
-    - print         
-""")
+    - print
+"""
+    )

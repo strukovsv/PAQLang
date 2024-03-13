@@ -1,7 +1,6 @@
-import pytest
-
 def test_1(main):
-    pgm = main(text = """
+    pgm = main(
+        text="""
 stages:
 - stage1:
     do:
@@ -19,41 +18,45 @@ stages:
     - in:
         - 1
         - 'test2'
-""")
+"""
+    )
     assert pgm.get_data("stage1") == []
     assert pgm.get_data("stage2") == [1]
     assert pgm.get_data("stage3") == [1, 2]
-    assert pgm.get_data("stage4") == [1, 'test2']
+    assert pgm.get_data("stage4") == [1, "test2"]
+
 
 def test_ref(main):
-    pgm = main(text = """
+    pgm = main(
+        text="""
 stages:
 - stage1:
     do:
-    - in: 
+    - in:
         - 1
         - 2
 - stage01:
     do:
-    - in: 
+    - in:
         - 3
         - 4
 - stage2:
     do:
-    - in: 
+    - in:
 - stage3:
     do:
     - in: ~stage1
 - stage4:
     do:
-    - in: 
+    - in:
         - ~stage01
 - stage5:
     do:
-    - in: 
+    - in:
         - ~stage1
         - ~stage01
-""")
+"""
+    )
     assert pgm.get_data("stage1") == [1, 2]
     assert pgm.get_data("stage2") == []
     assert pgm.get_data("stage3") == [1, 2]

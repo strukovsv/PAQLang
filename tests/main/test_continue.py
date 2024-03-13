@@ -1,12 +1,11 @@
-import pytest
-
 def test_continue(main, request):
-  pgm = main(text = '''
+    pgm = main(
+        text="""
 main:
 - in: 0
 - out: cnt_result
-- while:         
-  - inc: cnt_result           
+- while:
+  - inc: cnt_result
   - print: continue
   - continue:
     - in: ~cnt_result
@@ -15,17 +14,20 @@ main:
   - break:
     - in: ~cnt_result
     - eq: 10
-    ''')#, name = request.node.name)
-  assert pgm.get_data("cnt_result") == [10]
+    """
+    )  # , name = request.node.name)
+    assert pgm.get_data("cnt_result") == [10]
+
 
 def test_continue1(main, request):
-  pgm = main(text = '''
+    pgm = main(
+        text="""
 main:
 - in: 0
 - out: cnt_result
-- while:         
-    stage:           
-    - inc: cnt_result           
+- while:
+    stage:
+    - inc: cnt_result
     - print: continue
     - continue:
       - in: ~cnt_result
@@ -34,17 +36,20 @@ main:
     - break:
       - in: ~cnt_result
       - eq: 10
-    ''')#, name = request.node.name)
-  assert pgm.get_data("cnt_result") == [10]
+    """
+    )  # , name = request.node.name)
+    assert pgm.get_data("cnt_result") == [10]
+
 
 def test_continue2(main, request):
-  pgm = main(text = '''
+    pgm = main(
+        text="""
 main:
 - in: 0
 - out: cnt_result
-- while:         
-    stage0:           
-    - inc: cnt_result           
+- while:
+    stage0:
+    - inc: cnt_result
     - print: continue0
     - continue:
       - in: ~cnt_result
@@ -53,8 +58,8 @@ main:
     - break:
       - in: ~cnt_result
       - eq: 10
-    stage1:           
-    - inc: cnt_result           
+    stage1:
+    - inc: cnt_result
     - print: continue1
     - continue:
       - in: ~cnt_result
@@ -63,5 +68,6 @@ main:
     - break:
       - in: ~cnt_result
       - eq: 10
-    ''')#, name = request.node.name)
-  assert pgm.get_data("cnt_result") == [10]
+    """
+    )  # , name = request.node.name)
+    assert pgm.get_data("cnt_result") == [10]
