@@ -8,54 +8,30 @@ on:
       - master
     paths-ignore:
     - '.github/workflows/*'
+
 jobs:
 
-  test-and-lint:
-
-    name: pytest tests and lint
-
-    runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      packages: read
-      # To report GitHub Actions status checks
-      statuses: write
-
-    steps:
-
-    - uses: actions/checkout@v4
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
-
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-
-    - name: Test with pytest
-      env:
-        PYTHONPATH: "./src"
-      run: |
-        pip install pytest
-        cd src
-        python -m pytest ../tests/main/test* --log-cli-level=INFO
-
-    - name: flake8 Lint
-      uses: py-actions/flake8@v2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   release:
-
-    needs: test-and-lint
 
     name: Release
     runs-on: ubuntu-latest
     steps:
+
+      - name: Wait for tests to succeed
+        uses: lewagon/wait-on-check-action@v1.3.1
+        with:
+          ref: ${{ github.ref }}
+          check-name: 'pytest tests'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 20
+
+      - name: Wait for lint to succeed
+        uses: lewagon/wait-on-check-action@v1.3.1
+        with:
+          ref: ${{ github.ref }}
+          check-name: 'Lint flake8'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 20
 
       - name: Checkout
         uses: actions/checkout@v4

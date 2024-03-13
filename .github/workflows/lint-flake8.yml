@@ -15,7 +15,7 @@ jobs:
 
   flake8-lint:
 
-    name: Lint
+    name: Lint flake8
     runs-on: ubuntu-latest
 
     permissions:
@@ -37,13 +37,3 @@ jobs:
         uses: py-actions/flake8@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
-      - name: Release
-        run: echo release 
-      
-        # with:
-        #   ignore: "F401"
-        #   exclude: "src/ignoreme.py"
-        #   max-line-length: "100"
-        #   path: "src"
-        #   plugins: "flake8-bugbear==22.1.11 flake8-black"
