@@ -1,3 +1,26 @@
+## [1.2.2](https://github.com/strukovsv/PAQLang/compare/v1.2.1...v1.2.2) (2024-03-13)
+
+
+### ci
+
+* pytest -> lint -> release ([de80272](https://github.com/strukovsv/PAQLang/commit/de802726c347a0ace32fd3b51c4a9e5d0b71377e))
+* Update lint-flake8.yml ([2375a39](https://github.com/strukovsv/PAQLang/commit/2375a39811e07079c1addb80b0a828ec5e50b75d))
+* Update release.yml ([387de03](https://github.com/strukovsv/PAQLang/commit/387de03ada0e2f3ae06def78f07766b9b6b93ccb))
+* Update release.yml ([f782823](https://github.com/strukovsv/PAQLang/commit/f782823c0e5d722741d86e97fb159c29b228d745))
+* Update release.yml ([d58a276](https://github.com/strukovsv/PAQLang/commit/d58a276f549132553d9ae63e485639253cd5452c))
+* Update release.yml ([ba18549](https://github.com/strukovsv/PAQLang/commit/ba185497f28fb8ad867f47c74b5b5007e65cfed8))
+* Update release.yml ([c913ec7](https://github.com/strukovsv/PAQLang/commit/c913ec714fc3fb49e9bf74ba7f07db43107eb3fd))
+* отдельно все задания. release проверяет успешность других заданий ([1fcb9cc](https://github.com/strukovsv/PAQLang/commit/1fcb9cc33c2acdf1af6c811074ffde6c9d273bd0))
+* проверка выката ошибки новой версии ([10608d4](https://github.com/strukovsv/PAQLang/commit/10608d4976d14e8343397f05abc2de729893dcfa))
+
+### docs
+
+* Update README.md ([fdcd763](https://github.com/strukovsv/PAQLang/commit/fdcd76349d55d929a596ff112c6fb37440bf21d9))
+
+### style
+
+* Update _version.py ([9bef5c6](https://github.com/strukovsv/PAQLang/commit/9bef5c63314eb1d994ae4f594a551450cf5d47fd))
+
 ## [1.2.1](https://github.com/strukovsv/PAQLang/compare/v1.2.0...v1.2.1) (2024-03-13)
 
 
