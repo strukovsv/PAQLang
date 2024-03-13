@@ -1,4 +1,4 @@
-import os    
+import os
 
 __author__ = "Sergey Strukov"
 __copyright__ = "Copyright 2024 Sergey Strukov"
