@@ -9,6 +9,7 @@ logger = logging.getLogger(__name__)
 
 
 class MathOpers:
+    """Математические операции"""
 
     async def single_filter(
         pgm, param, p_queue, in_queue=None, out_queue=None

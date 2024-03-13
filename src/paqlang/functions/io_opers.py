@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 
 
 class IoOpers:
+    """Операции ввода/вывода"""
 
     async def single_walk(pgm, param, p_queue, in_queue=None, out_queue=None):
         """Получить список файлов в директории

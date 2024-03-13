@@ -8,6 +8,7 @@ logger = logging.getLogger(__name__)
 
 
 class QueueOpers:
+    """Работа со списками"""
 
     async def single_print(pgm, param, p_queue, in_queue=None, out_queue=None):
         """Распечатать текущую очередь данных, в loggin.info

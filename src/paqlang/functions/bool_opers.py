@@ -6,6 +6,7 @@ logger = logging.getLogger(__name__)
 
 
 class BoolOpers:
+    """Булевы операции"""
 
     async def single_bool_true(
         pgm, param, p_queue, in_queue=None, out_queue=None

@@ -7,6 +7,7 @@ logger = logging.getLogger(__name__)
 
 
 class ControlOpers:
+    """Управление выполнением"""
 
     async def single_exit(pgm, param, p_queue, in_queue=None, out_queue=None):
         """Завершить выполнение программы"""

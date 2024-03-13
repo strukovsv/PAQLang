@@ -22,6 +22,7 @@ def my_strip(s: str) -> str:
 
 
 class GitlabOpers:
+    """Gitlab"""
 
     async def single_gitlab_projects(
         pgm, param, p_queue, in_queue=None, out_queue=None
