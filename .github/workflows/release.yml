@@ -2,19 +2,29 @@ name: Release
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-      - master
-    paths-ignore:
-    - '.github/workflows/*'
-
+  # push:
+  #   branches:
+  #     - main
+  #     - master
+  #   paths-ignore:
+  #   - '.github/workflows/*'
+  workflow_run:
+    workflows: ["Lint-flake8", "PyTest"]
+    types: [completed]
 jobs:
 
-  release:
+  on-failure-release:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+    - name: failure
+      run: echo failure release workflow
+    
+  on-success-release:
 
     name: Release
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
 
       - name: Wait for tests to succeed
