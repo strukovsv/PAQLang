@@ -27,17 +27,13 @@ class GitlabOpers:
     async def single_gitlab_projects(
         pgm, param, p_queue, in_queue=None, out_queue=None
     ):
-        """Получить список проектов в репозитории
-
-        git_url:str - Подключение к gitlab
-        git_token:str
-        search:str = None - наименование проекта
-        regex:str = None - regex шаблон отбора веток
-
-        Входная очередь - не используется
-
-        Результат массив проектов
-        """
+        """Получить список проектов в репозитории.
+        Входная очередь - не используется.
+        Результат массив проектов.
+        * **git_url**:str - Подключение к gitlab
+        * **git_token**:str
+        * **search**:str=None - наименование проекта
+        * **regex**:str=None - regex шаблон отбора веток"""
         gl = await git_pool.get_project(param=param)
         out_queue.extend(await gl.get_projects(param=param))
         return ["success"]
@@ -45,18 +41,14 @@ class GitlabOpers:
     async def single_gitlab_branches(
         pgm, param, p_queue, in_queue=None, out_queue=None
     ):
-        """Получить список веток в репозитории
-
-        git_url:str - Подключение к gitlab
-        git_token:str
-        git_repo:str - проект репозитория
-        search:str = None - наименование ветки
-        regex:str = None - regex шаблон отбора веток
-
-        Входная очередь - не используется
-
-        Результат массив веток
-        """
+        """Получить список веток в репозитории.
+        Входная очередь - не используется.
+        Результат массив веток.
+        * **git_url**:str - Подключение к gitlab
+        * **git_token**:str
+        * **git_repo**:str - проект репозитория
+        * **search**:str=None - наименование ветки
+        * **regex**:str=None - regex шаблон отбора веток"""
         gl = await git_pool.get_project(param=param)
         for branch in await gl.get_branches(param):
             out_queue.append(branch["name"])
@@ -65,23 +57,18 @@ class GitlabOpers:
     async def multiple_gitlab_walk(
         pgm, param, p_queue, in_queue=None, out_queue=None
     ):
-        """Получить список файлов в репозитории
-
-        tasks:int = None - Максимальное кол-во потоков обработки операций
-        git_url:str - Подключение к gitlab
-        git_token:str
-        git_repo:str - проект репозитория
-        git_branch:str - ветка
-        regex:str = None - regex шаблон отбора файлов
-
+        """Получить список файлов в репозитории.
         Входная очередь, содержит список корневых узлов,
-        от которых запускается процесс
+        от которых запускается процесс.
         Все файлы в репозитории идут от "/"
-
-        Результат массив
-        - name: - имя файла
-          path: - полный маршрут файла
-        """
+        Результат массив:
+        {"name": имя файла, "path": полный маршрут файла}
+        * **tasks**:int = None - максимальное кол-во потоков обработки операций
+        * **git_url**:str - Подключение к gitlab
+        * **git_token**:str
+        * **git_repo**:str - проект репозитория
+        * **git_branch**:str - ветка
+        * **regex:str**=None - regex шаблон отбора файлов"""
         if len(in_queue):
             gl = await git_pool.get_project(param=param)
         while len(in_queue):
@@ -94,25 +81,21 @@ class GitlabOpers:
     async def multiple_gitlab_freads(
         pgm, param, p_queue, in_queue=None, out_queue=None
     ):
-        """Получить содержимое файлов в репозитории
-
-        tasks:int = None - Максимальное кол-во потоков обработки операций
-        git_url:str - Подключение к gitlab
-        git_token:str
-        git_repo:str - проект репозитория
-        git_branch:str - ветка
-
-        Входная очередь, содержит список файлов, полный маршрут от корня
-
-        Результат массив
-        - bom: 0
-          branch: - ветка
-          encode: cp1251 - найденная кодировка
-          encode_detect: ASCII
-          encoding: 1 - файл раскодирован
-          path: - полный путь файла
-          text: - содержимое файла
-        """
+        """Получить содержимое файлов в репозитории.
+        Входная очередь, содержит список файлов, полный маршрут от корня.
+        Результат массив:
+        {"bom": 0,
+        "branch": ветка,
+        "encode": cp1251 - найденная кодировка,
+        "encode_detect": ASCII,
+        "encoding": 1 - файл раскодирован,
+        "path": - полный путь файла,
+        "text": - содержимое файла}
+        * **tasks**:int=None - максимальное кол-во потоков обработки операций
+        * **git_url**:str - Подключение к gitlab
+        * **git_token**:str
+        * **git_repo**:str - проект репозитория
+        * **git_branch**:str - ветка"""
         if len(in_queue):
             gl = await git_pool.get_project(param=param)
             while len(in_queue):
@@ -123,18 +106,13 @@ class GitlabOpers:
     async def single_gitlab_tags(
         pgm, param, p_queue, in_queue=None, out_queue=None
     ):
-        """Получить список тегов в репозитории
-
-        git_url:str - Подключение к gitlab
-        git_token:str
-        git_repo:str - проект репозитория
-        search:str = None - наименование тега
-        regex:str = None - regex шаблон отбора тегов
-
-        Входная очередь - не используется
-
-        Результат массив тегов
-        """
+        """Получить список тегов в репозитории.
+        Входная очередь - не используется.
+        * **git_url**:str - Подключение к gitlab
+        * **git_token**:str
+        * **git_repo**:str - проект репозитория
+        * **search**:str = None - наименование тега
+        * **regex**:str = None - regex шаблон отбора тегов"""
         gl = await git_pool.get_project(param=param)
         out_queue.extend(await gl.get_tags(param))
         return ["success"]
@@ -142,14 +120,12 @@ class GitlabOpers:
     async def multiple_gitlab_commits(
         pgm, param, p_queue, in_queue=None, out_queue=None
     ):
-        """Получить список тегов в репозитории
-
-        git_url:str - Подключение к gitlab
-        git_token:str
-        git_repo:str - проект репозитория
-
-        Результат массив тегов
-        """
+        """Получить список коммитов по ветке.
+        Ветка параметр входной очереди.
+        * **git_url**:str - Подключение к gitlab
+        * **git_token**:str
+        * **git_repo**:str - проект репозитория
+        * **since**:str - дата в формате ISO, ограничение глубины просмотра"""
         if len(in_queue):
             gl = await git_pool.get_project(param=param)
             while len(in_queue):

@@ -1,4 +1,4 @@
-# Операции с датой
+# Операции с датой (DateOpers)
 
 - [now](#now)
 
@@ -6,8 +6,7 @@
 
 ## **now**
 
-```text
-Текущая дата в ISO формате, как строка
-```
+>
+> Текущая дата в ISO формате, как строка
 
-[/tests/main/test_now.py](/tests/main/test_now.py)
+[test code: now](/tests/main/test_now.py)

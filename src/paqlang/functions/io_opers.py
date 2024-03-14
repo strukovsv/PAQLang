@@ -15,11 +15,11 @@ class IoOpers:
     """Операции ввода/вывода"""
 
     async def single_walk(pgm, param, p_queue, in_queue=None, out_queue=None):
-        """Получить список файлов в директории
-
-        path:str или param:str - корневой маршрут поиска файлов
-        regex:str - шаблон отбора файлов, если не задан, то все файлы
-        """
+        """Получить рекурсивно список файлов в директории
+        * **param**:str=None - начальный путь поиска файлов
+        * **path**:str=None - начальный путь поиска файлов
+        * **regex**:str=None - шаблон отбора файлов, если не задан,
+        то найти все файлы"""
         regex = param.get_string("regex")
         while len(in_queue):
             # Получить файл
@@ -38,16 +38,14 @@ class IoOpers:
         pgm, param, p_queue, in_queue=None, out_queue=None
     ):
         """Прочитать файл и положить содержимое в выходную очередь
-           {fname, text}
-
-        encoding:str, если не задано, то param:str - по умолчанию utf-8
-          кодировка для windows файлов cp1251
-        to_json = None, если указан атрибут,
+          {fname, text}. Кодировка для windows файлов cp1251
+        * **param**:str=None - задается кодировка файлов (по умолчанию utf-8)
+        * **encoding**:str=None - кодировка файла
+        * **to_json**=None, если указан атрибут,
           то файл преобразовать в объект и вернуть как массив
-        split:str = None, есил указан атрибут,
+        * **split**:str=None, если указан атрибут,
           то разбить текстовый файл на строки.
-        Если указан символ разбиения, то разбить соответственно ему.
-        """
+          Если указан символ разбиения, то разбить соответственно ему."""
         # Задать кодировку файла
         encoding = param.get_string("encoding") or param.get_string()
         while len(in_queue):
@@ -77,12 +75,11 @@ class IoOpers:
     async def single_to_json(
         pgm, param, p_queue, in_queue=None, out_queue=None
     ):
-        """Распарсить JSON или YAML строковый элемент и положить в очередь
-
-        Входная строка преобразуется в JSON, несколько массивов склеиваются
-        attr:str = None
-          или param:str = None - задает имя атрибута текста JSON или YAML
-        """
+        """Распарсить JSON или YAML строковый элемент и положить в очередь.
+         Входная строка преобразуется в JSON, несколько массивов склеиваются.
+        * **param**:str=None - задает имя атрибута,
+        где содержится текст JSON или YAML
+        * **attr**:str=None - задает имя атрибута"""
         # Если задан параметр атрибут
         attr = param.get_string("attr") or param.get_string()
         while len(in_queue):

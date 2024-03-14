@@ -15,13 +15,18 @@ class MathOpers:
         pgm, param, p_queue, in_queue=None, out_queue=None
     ):
         """Отобрать элементы из числовой очереди, удовлетворяющие условию.
-          Не числовые элементы, отбрасываться из очереди
-
-        attr:str - если указано, то анализировать атрибут из элемента очереди
-        Условие параметры:
-          "lt", "le", "eq", "ne", "gt", "ge", "instr", "notinstr"
-        Условия объединяются по "AND"
-        """
+        Не числовые элементы, отбрасываться из очереди.
+        Условия объединяются по **and**.
+        * **attr**:str - если указано,
+        то анализировать атрибут из элемента очереди
+        * **lt** - меньше
+        * **le** - Меньше или равно
+        * **eq** - равно
+        * **ne** - не равно
+        * **gt** - больше
+        * **ge** - больше или равно
+        * **instr** - входит в строку
+        * **notinstr** - не входит в строку"""
         # Если задан параметр атрибут
         attr = param.get_string("attr")
         # Перебрать элементы очереди
@@ -48,10 +53,8 @@ class MathOpers:
 
     async def single_add(pgm, param, p_queue, in_queue=None, out_queue=None):
         """Добавить значение ко всем элементам очереди.
-          Не числовые элементы, отбрасываться из очереди
-
-        param:float - добавляемое значение
-        """
+        Не числовые элементы, отбрасываться из очереди.
+        * **param**:float - добавляемое значение"""
         return MathOpers.__math_opers(
             param,
             in_queue,
@@ -62,10 +65,8 @@ class MathOpers:
 
     async def single_sub(pgm, param, p_queue, in_queue=None, out_queue=None):
         """Вычесть значение из всех элементов очереди.
-          Не числовые элементы, отбрасываться из очереди
-
-        param:float - вычитаемое значение
-        """
+        Не числовые элементы, отбрасываться из очереди.
+        * **param**:float - вычитаемое значение"""
         return MathOpers.__math_opers(
             param,
             in_queue,
@@ -76,10 +77,8 @@ class MathOpers:
 
     async def single_mul(pgm, param, p_queue, in_queue=None, out_queue=None):
         """Умножить на значение все элементы очереди.
-          Не числовые элементы, отбрасываться из очереди
-
-        param:float - множитель
-        """
+        Не числовые элементы, отбрасываться из очереди
+        * **param**:float - множитель"""
         return MathOpers.__math_opers(
             param,
             in_queue,
@@ -90,10 +89,8 @@ class MathOpers:
 
     async def single_div(pgm, param, p_queue, in_queue=None, out_queue=None):
         """Разделить на значение все элементы очереди.
-          Не числовые элементы, отбрасываться из очереди
-
-        param:float - делитель
-        """
+        Не числовые элементы, отбрасываться из очереди.
+        * **param**:float - делитель"""
         assert param.get_float() != 0, "Делитель равен нулю"
         return MathOpers.__math_opers(
             param, in_queue, out_queue, "Не задан делитель", lambda x, y: x / y
@@ -123,23 +120,21 @@ class MathOpers:
         return ["success"]
 
     async def single_inc(pgm, param, p_queue, in_queue=None, out_queue=None):
-        """Добавить к очереди, числовое значение
-
-        step:float или param:float или 1 - добавляемое значение
-        mem:str - если указана переменная, то добавить значение к переменной,
-          результат также положить в очередь
-        """
+        """Добавить к очереди, числовое значение.
+        * **step**:float или **param**:float или 1 - добавляемое значение
+        * **mem**:str - если указана переменная,
+        то добавить значение к переменной,
+        результат также положить в очередь"""
         return MathOpers.__inc_dec(
             param=param, p_queue=p_queue, out_queue=out_queue, sign=1
         )
 
     async def single_dec(pgm, param, p_queue, in_queue=None, out_queue=None):
-        """Уменьшить значение в очереди
-
-        step:float или param:float или 1 - уменьшаемое значение
-        mem:str - если указана переменная, то уменьшить значение переменной,
-          результат также положить в очередь
-        """
+        """Уменьшить значение в очереди.
+        * **step**:float или **param**:float или 1 - уменьшаемое значение
+        * **mem**:str - если указана переменная,
+        то уменьшить значение переменной,
+        результат также положить в очередь"""
         return MathOpers.__inc_dec(
             param=param, p_queue=p_queue, out_queue=out_queue, sign=-1
         )
