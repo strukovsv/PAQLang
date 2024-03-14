@@ -3,11 +3,12 @@ name: Lint-flake8
 
 on:
 
-  workflow_dispatch:
-  
-  workflow_run:
-    workflows: ["PyTest"]
-    types: [completed]
+  push:
+    branches:
+      - main
+      - master
+    paths-ignore:
+    - '.github/workflows/*'
 
 jobs:
 
@@ -15,7 +16,6 @@ jobs:
 
     name: Lint flake8
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     permissions:
       contents: read
