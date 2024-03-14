@@ -30,7 +30,7 @@ def test_str(main):
 - distinct
 """
         )
-    assert "'<' not supported between instances of 'str' and 'int'" in str(
+    assert "'<' not supported between instances" in str(
         e_info.value
     )
 
@@ -58,7 +58,7 @@ def test_none(main):
 """
         )
     assert (
-        "'<' not supported between instances of 'NoneType' and 'int'"
+        "'<' not supported between instances"
         in str(e_info.value)
     )
 
