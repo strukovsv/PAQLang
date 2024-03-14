@@ -45,7 +45,7 @@ pool = Pool()
 class OracleOpers:
     """Oracle"""
 
-    async def execute(
+    async def _execute(
         pgm, param, p_queue, in_queue=None, out_queue=None, fetch=None
     ):
         if len(in_queue):
@@ -181,28 +181,24 @@ class OracleOpers:
     async def multiple_oracle_execute(
         pgm, param, p_queue, in_queue=None, out_queue=None
     ):
-        """Выполнить SQL запрос. Запросы разбиваются на подзапросы "/" и ";"
-
-        oracle_user:str - Подключение к oracle
-        oracle_password:str
-        oracle_dsn:str
-
-        Входная очередь:
-        - если не заданы параметры, то список текстов запросов.
-        - если git_url:str, то список файлов из getlab.
-          Файл загружается из git и выполняется.
-          Необходимы также git_token, git_repo, git_branch
-        - если path:str, то список файлов из директория на диске.
-          Формат атрибута "...:1...". Вместо :1 подставляется заданный файл.
-
-        Результат массив выполенных запросов
-        {"result": 0 или 1, # 0 - error execute, 1 - succes execute
-         "output":str, # строки dbms_output потока
-         "errmsg":str, # ошибка выполнения, если result = 0
-         "file":str, # путь к файлу, если запрос был загружен из файла или git
+        """Выполнить SQL запрос. Запросы разбиваются на подзапросы "/" и ";".
+        Результат массив выполнных запросов
+        {"result": 0 - error execute, 1 - succes execute,
+         "output": строки dbms_output потока,
+         "errmsg": ошибка выполнения,
+         "file": путь к файлу, если запрос был загружен из файла или git
         }
-        """
-        await OracleOpers.execute(
+        * **oracle_user**:str - Подключение к oracle
+        * **oracle_password**:str
+        * **oracle_dsn**:str
+        * если не заданы параметры, то входная очередь спсиок текстов запросов.
+        * если **git_url**:str, то список файлов из gitlab.
+        Файл загружается из git и выполняется.
+        Необходимы также **git_token**, **git_repo**, **git_branch**
+        * если **path**:str, то список файлов из директория на диске.
+        Формат атрибута "...:1...".
+        Вместо :1 подставляется заданный файл из очереди."""
+        await OracleOpers._execute(
             pgm, param, p_queue, in_queue, out_queue, fetch=False
         )
         return ["success"]
@@ -210,7 +206,19 @@ class OracleOpers:
     async def multiple_oracle_fetchall(
         pgm, param, p_queue, in_queue=None, out_queue=None
     ):
-        await OracleOpers.execute(
+        """Выполнить запрос к базе данных.
+        Вернуть все записи.
+        * **oracle_user**:str - Подключение к oracle
+        * **oracle_password**:str
+        * **oracle_dsn**:str
+        * если не заданы параметры, то входная очередь спсиок текстов запросов.
+        * если **git_url**:str, то список файлов из gitlab.
+        Файл загружается из git и выполняется.
+        Необходимы также **git_token**, **git_repo**, **git_branch**
+        * если **path**:str, то список файлов из директория на диске.
+        Формат атрибута "...:1...".
+        Вместо :1 подставляется заданный файл из очереди."""
+        await OracleOpers._execute(
             pgm, param, p_queue, in_queue, out_queue, fetch="all"
         )
         return ["success"]
@@ -218,7 +226,19 @@ class OracleOpers:
     async def multiple_oracle_fetchone(
         pgm, param, p_queue, in_queue=None, out_queue=None
     ):
-        await OracleOpers.execute(
+        """Выполнить запрос к базе данных.
+        Вернуть только первую запись.
+        * **oracle_user**:str - Подключение к oracle
+        * **oracle_password**:str
+        * **oracle_dsn**:str
+        * если не заданы параметры, то входная очередь спсиок текстов запросов.
+        * если **git_url**:str, то список файлов из gitlab.
+        Файл загружается из git и выполняется.
+        Необходимы также **git_token**, **git_repo**, **git_branch**
+        * если **path**:str, то список файлов из директория на диске.
+        Формат атрибута "...:1...".
+        Вместо :1 подставляется заданный файл из очереди."""
+        await OracleOpers._execute(
             pgm, param, p_queue, in_queue, out_queue, fetch="one"
         )
         return ["success"]

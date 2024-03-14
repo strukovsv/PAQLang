@@ -13,12 +13,10 @@ class StringOpers:
     async def single_search(
         pgm, param, p_queue, in_queue=None, out_queue=None
     ):
-        """Отобрать элементы из очереди, удовлетворяющие условию
-
-        in_queue - входная очередь
-        attr:str - если указано, то анализировать атрибут из элемента очереди
-        regex:str или param:str - условия отбора
-        """
+        """Отобрать элементы из очереди, удовлетворяющие условию.
+        * **attr**:str=None - если указано,
+        то анализировать атрибут из элемента очереди
+        * **regex**:str или **param**:str - условия отбора"""
         attr = param.get_string("attr")
         regex = param.get_string("regex") or param.get_string()
         assert regex is not None, 'Не задан атрибут поиска "regex"'
@@ -29,11 +27,9 @@ class StringOpers:
         return ["success"]
 
     async def single_match(pgm, param, p_queue, in_queue=None, out_queue=None):
-        """Вырезать из элемента, заданный regex подстроку
-
-        in_queue - входная очередь
-        regex:str или param:str - условие получения подстроки, группа 1
-        """
+        """Вырезать из элемента, заданный regex подстроку.
+        * **regex**:str или **param**:str -
+        условие получения подстроки, группа 1"""
         regex = param.get_string("regex") or param.get_string()
         assert regex is not None, 'Не задан атрибут поиска "regex"'
         for elem in in_queue:
@@ -45,12 +41,10 @@ class StringOpers:
     async def single_replace(
         pgm, param, p_queue, in_queue=None, out_queue=None
     ):
-        """Заменить во входной очереди, в строках, заданный regex на подстроку
-
-        in_queue - входная очередь
-        regex:str или param:str - условие получения подстроки
-        dest:str - на что заменять, если не указано, заменяем на пустую строку
-        """
+        """Заменить во входной очереди, в строках, заданный regex на подстроку.
+        * **regex**:str или **param**:str - условие получения подстроки
+        * **dest**:str - на что заменять, если не указано,
+        заменяем на пустую строку"""
         regex = param.get_string("regex") or param.get_string()
         dest = param.get_string("dest") or ""
         assert regex is not None, 'Не задан атрибут поиска "regex"'
@@ -59,11 +53,8 @@ class StringOpers:
         return ["success"]
 
     async def single_subst(pgm, param, p_queue, in_queue=None, out_queue=None):
-        """Заменить в заданной строке :1, на элементы из входной очереди
-
-        in_queue - входная очередь
-        text:str или param:str - строка шаблон
-        """
+        """Заменить в заданной строке :1, на элементы из входной очереди.
+        * **text**:str или **param**:str - строка шаблон"""
         text = param.get_string("text") or param.get_string()
         assert text is not None, "Не задана исходная строка - шаблон"
         for elem in in_queue:
@@ -71,9 +62,8 @@ class StringOpers:
         return ["success"]
 
     async def single_split(pgm, param, p_queue, in_queue=None, out_queue=None):
-        """Разбить строку на элементы
-
-        param:str - строка разбиения, по умолчанию \n"""
+        """Разбить строку на элементы.
+        * **param**:str - строка разбиения, по умолчанию "**\\n**" """
         attr = param.get_string("attr")
         split_str = param.get_string() or "\n"
         while len(in_queue):
@@ -98,10 +88,8 @@ class StringOpers:
         return ["success"]
 
     async def single_join(pgm, param, p_queue, in_queue=None, out_queue=None):
-        """Соединить элементы массива в строку
-
-        param:str - строка объединения, по умолчанию \n
-        """
+        """Соединить элементы массива в строку.
+        * **param**:str - строка объединения, по умолчанию "**\\n**" """
         join_str = param.get_string() or "\n"
         out_queue.append(
             join_str.join(

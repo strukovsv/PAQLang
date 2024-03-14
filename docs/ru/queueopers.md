@@ -1,4 +1,4 @@
-# Работа со списками
+# Работа со списками (QueueOpers)
 
 - [distinct](#distinct)
 - [expand](#expand)
@@ -21,220 +21,198 @@
 
 ## **distinct**
 
-```text
-Получить уникальные элементы очереди и отсортировать по возрастанию
+>
+> Получить уникальные элементы очереди и отсортировать по возрастанию.
 
-in_queue - входная очередь
-
-```
-
-[/tests/main/test_distinct.py](/tests/main/test_distinct.py)
+[test code: distinct](/tests/main/test_distinct.py)
 
 ---
 
 ## **expand**
 
-```text
-Расширить подмассивы
+>
+> Расширить подмассивы.
+>
+> **Parameters**:
+>
+> - **param** - добавляемое значение в очередь
 
-in_queue - входная очередь
-param - добавляемое значение в очередь
-
-```
-
-[/tests/main/test_expand.py](/tests/main/test_expand.py)
+[test code: expand](/tests/main/test_expand.py)
 
 ---
 
 ## **first**
 
-```text
-Вернуть первый элемент очереди
+>
+> Вернуть первый элемент очереди.
+>
+> **Parameters**:
+>
+> - **param**:str=None - если задано значение, то взять очередь из переменной
+> __
 
-in_queue - входная очередь
-param:str - если задано значение, то взять очередь из переменной
-
-```
-
-[/tests/main/test_first.py](/tests/main/test_first.py)
+[test code: first](/tests/main/test_first.py)
 
 ---
 
 ## **in**
 
-```text
-Положить данные в очередь как список
+>
+> Положить данные в очередь.
 
-Результат в выходную очередь out_queue
-
-```
-
-[/tests/main/test_in.py](/tests/main/test_in.py)
+[test code: in](/tests/main/test_in.py)
 
 ---
 
 ## **intersect**
 
-```text
-Вернуть только пересекаемые элементы очереди
+>
+> Вернуть только пересекаемые элементы очереди.
+>
+> **Parameters**:
+>
+> - **param**:list - вторая очередь
 
-in_queue - первая очередь
-param:list - вторая очередь
-
-```
-
-[/tests/main/test_intersect.py](/tests/main/test_intersect.py)
+[test code: intersect](/tests/main/test_intersect.py)
 
 ---
 
 ## **last**
 
-```text
-Вернуть последний элемент очереди
+>
+> Вернуть последний элемент очереди.
+>
+> **Parameters**:
+>
+> - **param**:str=None - если задано значение, то взять очередь из переменной
 
-in_queue - входная очередь
-param:str - если задано значение, то взять очередь из переменной
-
-```
-
-[/tests/main/test_last.py](/tests/main/test_last.py)
+[test code: last](/tests/main/test_last.py)
 
 ---
 
 ## **len**
 
-```text
-Вернуть размер входной очереди
+>
+> Вернуть размер входной очереди.
 
-in_queue - входная очередь
-
-```
-
-[/tests/main/test_len.py](/tests/main/test_len.py)
+[test code: len](/tests/main/test_len.py)
 
 ---
 
 ## **minus**
 
-```text
-Вычесть очередь из очереди
+>
+> Вычесть очередь из очереди.
+>
+> **Parameters**:
+>
+> - **param**:list - вычитаемая очередь
 
-in_queue - входная очередь
-param:list - вычитаемая очередь
-
-```
-
-[/tests/main/test_minus.py](/tests/main/test_minus.py)
+[test code: minus](/tests/main/test_minus.py)
 
 ---
 
 ## **out**
 
-```text
-Содержимое очереди записать в переменную памяти
+>
+> Содержимое очереди записать в переменную памяти.
+>
+> **Parameters**:
+>
+> - **param**:str - наименование переменной памяти
 
-in_queue - входная очередь
-param:str - наименование переменной памяти
-ps: очередь не изменяется
-
-```
-
-[/tests/main/test_out.py](/tests/main/test_out.py)
+[test code: out](/tests/main/test_out.py)
 
 ---
 
 ## **pop**
 
-```text
-Вытолкнуть последний элемент из очереди
+>
+> Вытолкнуть последний элемент из очереди.
+>
+> **Parameters**:
+>
+> - **param**:str - если задано значение, то взять очередь из переменной
 
-in_queue - входная очередь
-param:str - если задано значение, то взять очередь из переменной
-
-```
-
-[/tests/main/test_pop.py](/tests/main/test_pop.py)
+[test code: pop](/tests/main/test_pop.py)
 
 ---
 
 ## **print**
 
-```text
-Распечатать текущую очередь данных, в loggin.info
+>
+> Распечатать текущую очередь данных, в loggin.info. Очередь не изменяется.
+>
+> **Parameters**:
+>
+> - **param**:str - заголовок сообщения
 
-in_queue - входная очередь
-ps: очередь не изменяется
-
-```
-
-[/tests/main/test_print.py](/tests/main/test_print.py)
+[test code: print](/tests/main/test_print.py)
 
 ---
 
 ## **push**
 
-```text
-Добавить элементы в конец текущей очереди
+>
+> Добавить элементы в конец текущей очереди.
+>
+> **Parameters**:
+>
+> - **param** - добавляемое значение в очередь
 
-in_queue - входная очередь
-param - добавляемое значение в очередь
-
-```
-
-[/tests/main/test_push.py](/tests/main/test_push.py)
+[test code: push](/tests/main/test_push.py)
 
 ---
 
 ## **save**
 
-```text
-Сохранить очередь на диске
+>
+> Сохранить очередь в файл.
+>
+> **Parameters**:
+>
+> - **param**:str - наименование файла данных
 
-in_queue - входная очередь
-param:str - наименование файла данных
-
-```
-
-[/tests/main/test_save.py](/tests/main/test_save.py)
+[test code: save](/tests/main/test_save.py)
 
 ---
 
 ## **sort**
 
-```text
-Отсортировать список
+>
+> Отсортировать входную очередь.
+>
+> **Parameters**:
+>
+> - **param**:str - направление сортировки **"desc"**,
+>
+> - "asc"** - по умолчанию
+> __
 
-in_queue - входная очередь
-param:str - направление сортировки "desc", "asc" - по умолчанию
-
-```
-
-[/tests/main/test_sort.py](/tests/main/test_sort.py)
+[test code: sort](/tests/main/test_sort.py)
 
 ---
 
 ## **union**
 
-```text
-Объединить очереди, убрать дубликаты
+>
+> Объединить очереди, убрать дубликаты.
+>
+> **Parameters**:
+>
+> - **param** - добавляемое значение в очередь
 
-in_queue - входная очередь
-param - добавляемое значение в очередь
-
-```
-
-[/tests/main/test_union.py](/tests/main/test_union.py)
+[test code: union](/tests/main/test_union.py)
 
 ---
 
 ## **union_all**
 
-```text
-Объединить очереди
+>
+> Объединить очереди.
+>
+> **Parameters**:
+>
+> - **param** - добавляемое значение в очередь
 
-in_queue - входная очередь
-param - добавляемое значение в очередь
-
-```
-
-[/tests/main/test_union_all.py](/tests/main/test_union_all.py)
+[test code: union_all](/tests/main/test_union_all.py)

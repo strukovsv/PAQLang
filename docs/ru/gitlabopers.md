@@ -1,4 +1,4 @@
-# Gitlab
+# Gitlab (GitlabOpers)
 
 - [gitlab_branches](#gitlab_branches)
 - [gitlab_commits](#gitlab_commits)
@@ -12,150 +12,134 @@
 
 ## **gitlab_branches**
 
-```text
-Получить список веток в репозитории
+>
+> Получить список веток в репозитории. Входная очередь - не используется. Результат массив веток.
+>
+> **Parameters**:
+>
+> - **git_url**:str - Подключение к gitlab
+>
+> - **git_token**:str
+>
+> - **git_repo**:str - проект репозитория
+>
+> - **search**:str=None - наименование ветки
+>
+> - **regex**:str=None - regex шаблон отбора веток
 
-git_url:str - Подключение к gitlab
-git_token:str
-git_repo:str - проект репозитория
-search:str = None - наименование ветки
-regex:str = None - regex шаблон отбора веток
-
-Входная очередь - не используется
-
-Результат массив веток
-
-```
-
-[/tests/main/test_gitlab_branches.py](/tests/main/test_gitlab_branches.py)
+[test code: gitlab_branches](/tests/gitlab/test_gitlab_branches.py)
 
 ---
 
 ## **gitlab_commits**
 
-```text
-Получить список тегов в репозитории
+>
+> Получить список коммитов по ветке. Ветка параметр входной очереди.
+>
+> **Parameters**:
+>
+> - **git_url**:str - Подключение к gitlab
+>
+> - **git_token**:str
+>
+> - **git_repo**:str - проект репозитория
+>
+> - **since**:str - дата в формате ISO, ограничение глубины просмотра
 
-git_url:str - Подключение к gitlab
-git_token:str
-git_repo:str - проект репозитория
-
-Результат массив тегов
-
-```
-
-[/tests/main/test_gitlab_commits.py](/tests/main/test_gitlab_commits.py)
+[test code: gitlab_commits](/tests/gitlab/test_gitlab_commits.py)
 
 ---
 
 ## **gitlab_diff**
 
-```text
-Получить список измененых файлов по SHA commit
+>
+> Получить список измененых файлов по SHA commit
+>  tasks:int = None - кол-во потоков git_url:str - Подключение к gitlab git_token:str git_repo:str - проект репозитория
+>  Входная очередь массив sha или {"id":} Результат массив новых файлов
+> 
 
-tasks:int = None - кол-во потоков
-git_url:str - Подключение к gitlab
-git_token:str
-git_repo:str - проект репозитория
-
-Входная очередь массив sha или {"id":}
-Результат массив новых файлов
-
-```
-
-[/tests/main/test_gitlab_diff.py](/tests/main/test_gitlab_diff.py)
+[test code: gitlab_diff](/tests/gitlab/test_gitlab_diff.py)
 
 ---
 
 ## **gitlab_freads**
 
-```text
-Получить содержимое файлов в репозитории
+>
+> Получить содержимое файлов в репозитории. Входная очередь, содержит список файлов, полный маршрут от корня. Результат массив: {"bom": 0, "branch": ветка, "encode": cp1251 - найденная кодировка, "encode_detect": ASCII, "encoding": 1 - файл раскодирован, "path": - полный путь файла, "text": - содержимое файла}
+>
+> **Parameters**:
+>
+> - **tasks**:int=None - максимальное кол-во потоков обработки операций
+>
+> - **git_url**:str - Подключение к gitlab
+>
+> - **git_token**:str
+>
+> - **git_repo**:str - проект репозитория
+>
+> - **git_branch**:str - ветка
 
-tasks:int = None - Максимальное кол-во потоков обработки операций
-git_url:str - Подключение к gitlab
-git_token:str
-git_repo:str - проект репозитория
-git_branch:str - ветка
-
-Входная очередь, содержит список файлов, полный маршрут от корня
-
-Результат массив
-- bom: 0
-branch: - ветка
-encode: cp1251 - найденная кодировка
-encode_detect: ASCII
-encoding: 1 - файл раскодирован
-path: - полный путь файла
-text: - содержимое файла
-
-```
-
-[/tests/main/test_gitlab_freads.py](/tests/main/test_gitlab_freads.py)
+[test code: gitlab_freads](/tests/gitlab/test_gitlab_freads.py)
 
 ---
 
 ## **gitlab_projects**
 
-```text
-Получить список проектов в репозитории
+>
+> Получить список проектов в репозитории. Входная очередь - не используется. Результат массив проектов.
+>
+> **Parameters**:
+>
+> - **git_url**:str - Подключение к gitlab
+>
+> - **git_token**:str
+>
+> - **search**:str=None - наименование проекта
+>
+> - **regex**:str=None - regex шаблон отбора веток
 
-git_url:str - Подключение к gitlab
-git_token:str
-search:str = None - наименование проекта
-regex:str = None - regex шаблон отбора веток
-
-Входная очередь - не используется
-
-Результат массив проектов
-
-```
-
-[/tests/main/test_gitlab_projects.py](/tests/main/test_gitlab_projects.py)
+[test code: gitlab_projects](/tests/gitlab/test_gitlab_projects.py)
 
 ---
 
 ## **gitlab_tags**
 
-```text
-Получить список тегов в репозитории
+>
+> Получить список тегов в репозитории. Входная очередь - не используется.
+>
+> **Parameters**:
+>
+> - **git_url**:str - Подключение к gitlab
+>
+> - **git_token**:str
+>
+> - **git_repo**:str - проект репозитория
+>
+> - **search**:str = None - наименование тега
+>
+> - **regex**:str = None - regex шаблон отбора тегов
 
-git_url:str - Подключение к gitlab
-git_token:str
-git_repo:str - проект репозитория
-search:str = None - наименование тега
-regex:str = None - regex шаблон отбора тегов
-
-Входная очередь - не используется
-
-Результат массив тегов
-
-```
-
-[/tests/main/test_gitlab_tags.py](/tests/main/test_gitlab_tags.py)
+[test code: gitlab_tags](/tests/gitlab/test_gitlab_tags.py)
 
 ---
 
 ## **gitlab_walk**
 
-```text
-Получить список файлов в репозитории
+>
+> Получить список файлов в репозитории. Входная очередь, содержит список корневых узлов, от которых запускается процесс. Все файлы в репозитории идут от "/" Результат массив: {"name": имя файла, "path": полный маршрут файла}
+>
+> **Parameters**:
+>
+> - **tasks**:int = None - максимальное кол-во потоков обработки операций
+>
+> - **git_url**:str - Подключение к gitlab
+>
+> - **git_token**:str
+>
+> - **git_repo**:str - проект репозитория
+>
+> - **git_branch**:str - ветка
+>
+> - **regex:str**=None - regex шаблон отбора файлов
 
-tasks:int = None - Максимальное кол-во потоков обработки операций
-git_url:str - Подключение к gitlab
-git_token:str
-git_repo:str - проект репозитория
-git_branch:str - ветка
-regex:str = None - regex шаблон отбора файлов
-
-Входная очередь, содержит список корневых узлов,
-от которых запускается процесс
-Все файлы в репозитории идут от "/"
-
-Результат массив
-- name: - имя файла
-path: - полный маршрут файла
-
-```
-
-[/tests/main/test_gitlab_walk.py](/tests/main/test_gitlab_walk.py)
+[test code: gitlab_walk](/tests/gitlab/test_gitlab_walk.py)

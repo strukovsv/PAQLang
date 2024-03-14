@@ -10,11 +10,10 @@ def test_OtherOpers(main):
     main(
         text="""
 - popers:
-    # groups: BoolOpers
+    # groups: IoOpers
     path: /tmp/log
 """
     )
-
 
 # def test_group_OtherOpers(main):
 #     main(

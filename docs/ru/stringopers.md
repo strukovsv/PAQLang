@@ -1,4 +1,4 @@
-# Строковые операции
+# Строковые операции (StringOpers)
 
 - [join](#join)
 - [match](#match)
@@ -12,94 +12,89 @@
 
 ## **join**
 
-```text
-Соединить элементы массива в строку
+>
+> Соединить элементы массива в строку.
+>
+> **Parameters**:
+>
+> - **param**:str - строка объединения, по умолчанию "**\n**"
 
-param:str - строка объединения, по умолчанию 
-
-
-```
-
-[/tests/main/test_join.py](/tests/main/test_join.py)
+[test code: join](/tests/main/test_join.py)
 
 ---
 
 ## **match**
 
-```text
-Вырезать из элемента, заданный regex подстроку
+>
+> Вырезать из элемента, заданный regex подстроку.
+>
+> **Parameters**:
+>
+> - **regex**:str или **param**:str - условие получения подстроки, группа 1
 
-in_queue - входная очередь
-regex:str или param:str - условие получения подстроки, группа 1
-
-```
-
-[/tests/main/test_match.py](/tests/main/test_match.py)
+[test code: match](/tests/main/test_match.py)
 
 ---
 
 ## **replace**
 
-```text
-Заменить во входной очереди, в строках, заданный regex на подстроку
+>
+> Заменить во входной очереди, в строках, заданный regex на подстроку.
+>
+> **Parameters**:
+>
+> - **regex**:str или **param**:str - условие получения подстроки
+>
+> - **dest**:str - на что заменять, если не указано, заменяем на пустую строку
 
-in_queue - входная очередь
-regex:str или param:str - условие получения подстроки
-dest:str - на что заменять, если не указано, заменяем на пустую строку
-
-```
-
-[/tests/main/test_replace.py](/tests/main/test_replace.py)
+[test code: replace](/tests/main/test_replace.py)
 
 ---
 
 ## **search**
 
-```text
-Отобрать элементы из очереди, удовлетворяющие условию
+>
+> Отобрать элементы из очереди, удовлетворяющие условию.
+>
+> **Parameters**:
+>
+> - **attr**:str=None - если указано, то анализировать атрибут из элемента очереди
+>
+> - **regex**:str или **param**:str - условия отбора
 
-in_queue - входная очередь
-attr:str - если указано, то анализировать атрибут из элемента очереди
-regex:str или param:str - условия отбора
-
-```
-
-[/tests/main/test_search.py](/tests/main/test_search.py)
+[test code: search](/tests/main/test_search.py)
 
 ---
 
 ## **split**
 
-```text
-Разбить строку на элементы
+>
+> Разбить строку на элементы.
+>
+> **Parameters**:
+>
+> - **param**:str - строка разбиения, по умолчанию "**\n**"
 
-param:str - строка разбиения, по умолчанию 
-
-```
-
-[/tests/main/test_split.py](/tests/main/test_split.py)
+[test code: split](/tests/main/test_split.py)
 
 ---
 
 ## **subst**
 
-```text
-Заменить в заданной строке :1, на элементы из входной очереди
+>
+> Заменить в заданной строке :1, на элементы из входной очереди.
+>
+> **Parameters**:
+>
+> - **text**:str или **param**:str - строка шаблон
 
-in_queue - входная очередь
-text:str или param:str - строка шаблон
-
-```
-
-[/tests/main/test_subst.py](/tests/main/test_subst.py)
+[test code: subst](/tests/main/test_subst.py)
 
 ---
 
 ## **transform**
 
-```text
-Найти в списке элемент,
-независимо от регистра и вернуть правильное наименование
-```
+>
+> Найти в списке элемент, независимо от регистра и вернуть правильное наименование
 
-[/tests/main/test_transform.py](/tests/main/test_transform.py)
+[test code: transform](/tests/main/test_transform.py)
