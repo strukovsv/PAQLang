@@ -23,7 +23,7 @@ jobs:
           fetch-depth: 0
 
       - name: Wait workflow Lint-flake8 and PyTest
-        uses: ahmadnassri/action-workflow-run-wait@v1
+        uses: ahmadnassri/action-workflow-run-wait@v1.4.4
         with:
           # 300 secund timeout
           timeout: 300000
