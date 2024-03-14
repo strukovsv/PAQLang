@@ -24,6 +24,9 @@ jobs:
 
       - name: Wait workflow Lint-flake8 and PyTest
         uses: ahmadnassri/action-workflow-run-wait@v1
+        with:
+          # 300 secund timeout
+          timeout: 300000
 
       - name: Release
         uses: cycjimmy/semantic-release-action@v4
