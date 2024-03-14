@@ -16,6 +16,7 @@
             {"tag": "docs", "release": false},
             {"tag": "feat", "release": "minor"},
             {"tag": "fix", "release": "patch"},
+            {"tag": "bugfix", "release": "patch"},
             {"tag": "refactor", "release": "patch"},
             {"tag": "security", "release": "patch"},
             {"tag": "style", "release": "patch"},
