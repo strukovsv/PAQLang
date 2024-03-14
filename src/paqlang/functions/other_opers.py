@@ -116,7 +116,7 @@ class OtherOpers:
             # Перебрать функции для оглавления
             for oper in group["opers"]:
                 # Оглавление функции в topic
-                files.add("topic", f'  - [{oper}]({group["id"]}.md#{oper})')
+                files.add("topic", f'  - [{oper}]({group["id"].lower()}.md#{oper})')
                 # Оглавление функции в группе
                 files.add(id, f"- [{oper}](#{oper.lower()})")
 
