@@ -107,16 +107,16 @@ class OtherOpers:
         files.add("topic")
         # Перебрать группы
         for group in groups:
-            # Оглавление группы функций
-            files.add("topic", f'- [{group["name"]}]({group["id"]}.md)')
             # Файл группы функций
-            id = group["id"]
+            id = group["id"].lower()
+            # Оглавление группы функций
+            files.add("topic", f'- [{group["name"]}]({id}.md)')
             files.add(id, f'# {group["name"]} ({group["id"]})')
             files.add(id)
             # Перебрать функции для оглавления
             for oper in group["opers"]:
                 # Оглавление функции в topic
-                files.add("topic", f'  - [{oper}]({group["id"].lower()}.md#{oper})')
+                files.add("topic", f'  - [{oper}]({id}.md#{oper})')
                 # Оглавление функции в группе
                 files.add(id, f"- [{oper}](#{oper.lower()})")
 
@@ -165,9 +165,9 @@ class OtherOpers:
                             files.add(id, f"> _{line.strip()}_")
 
                 test_name = f"test code: {oper_name}"
-                if id == "OracleOpers":
+                if id == "oracleopers":
                     path2 = "oracle"
-                elif id == "GitlabOpers":
+                elif id == "gitlabopers":
                     path2 = "gitlab"
                 else:
                     path2 = "main"
