@@ -10,7 +10,7 @@ jobs:
     name: start new release
     runs-on: ubuntu-latest
 
-    steps:
-    - name: Get version and tag
-      run: |
-        echo "test"
+    # steps:
+    # - name: Get version and tag
+    #   run: |
+    #     echo "test"
