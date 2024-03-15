@@ -1,8 +1,8 @@
 # Oracle (OracleOpers)
 
-- [oracle_execute](#oracle_execute)
-- [oracle_fetchall](#oracle_fetchall)
-- [oracle_fetchone](#oracle_fetchone)
+- [oracle_execute: Выполнить SQL запрос](#oracle_execute)
+- [oracle_fetchall: Выполнить запрос к базе данных](#oracle_fetchall)
+- [oracle_fetchone: Выполнить запрос к базе данных](#oracle_fetchone)
 
 ---
 

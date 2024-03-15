@@ -1,8 +1,8 @@
 # Булевы операции (BoolOpers)
 
-- [bool_false](#bool_false)
-- [bool_true](#bool_true)
-- [not](#not)
+- [bool_false: Положить в очередь ложь](#bool_false)
+- [bool_true: Положить в очередь истина, любой не пустой массив](#bool_true)
+- [not: Инвертировать логическую операцию](#not)
 
 ---
 
