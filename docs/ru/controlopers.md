@@ -1,9 +1,9 @@
 # Управление выполнением (ControlOpers)
 
-- [break](#break)
-- [continue](#continue)
-- [exit](#exit)
-- [when](#when)
+- [break: Если условие истино, ты прервать цикл while (break)](#break)
+- [continue: Если условие истино, ты прервать цикл while (continue)](#continue)
+- [exit: Завершить выполнение программы](#exit)
+- [when: Если условие истино, ты выполнить stage](#when)
 
 ---
 

@@ -72,7 +72,7 @@ class OtherOpers:
     """Сервисные операции"""
 
     async def single_opers(pgm, param, p_queue, in_queue=None, out_queue=None):
-        """Вывести словарь функций
+        """Вывести словарь функций.
         * **param**:str=None - по заданной группе функций"""
         group = param.get_string()
         for oper in {**pgm.single_opers, **pgm.multiple_opers}.values():
@@ -83,7 +83,7 @@ class OtherOpers:
     async def single_popers(
         pgm, param, p_queue, in_queue=None, out_queue=None
     ):
-        """Подготовить документацию по функциям
+        """Подготовить документацию по функциям.
         * **groups**:[str|list] или param:str или None -
         вывеcти только данные заданной группы функций
         * **path**:str - вывести в файлы по данному маршруту"""
@@ -114,11 +114,18 @@ class OtherOpers:
             files.add(id, f'# {group["name"]} ({group["id"]})')
             files.add(id)
             # Перебрать функции для оглавления
-            for oper in group["opers"]:
+            for oper_name in group["opers"]:
+                oper = opers[oper_name]
                 # Оглавление функции в topic
-                files.add("topic", f'  - [{oper}]({id}.md#{oper})')
+                files.add(
+                    "topic",
+                    f'  - [{oper_name}: {oper["title"]}]({id}.md#{oper_name})'
+                )
                 # Оглавление функции в группе
-                files.add(id, f"- [{oper}](#{oper.lower()})")
+                files.add(
+                    id,
+                    f'- [{oper_name}: {oper["title"]}](#{oper_name.lower()})'
+                )
 
             # Перебрать функции для формирования текста
             for oper_name in group["opers"]:

@@ -76,11 +76,13 @@ class Pgm:
                 if fullname[0:1] == "_":
                     continue
                 name = fullname.replace("multiple_", "").replace("single_", "")
+                docs = coroutine.__doc__.replace("\n", " ").split(".")
                 value = {
                     "group": in_class.__name__,
                     "group_doc": in_class.__doc__,
                     "coroutine": coroutine,
                     "doc": coroutine.__doc__,
+                    "title": docs[0] if len(docs) > 0 else "",
                     "name": name,
                     "fullname": fullname,
                     "multiple": "multiple_" in fullname,

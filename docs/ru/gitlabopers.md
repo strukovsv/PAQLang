@@ -1,12 +1,12 @@
 # Gitlab (GitlabOpers)
 
-- [gitlab_branches](#gitlab_branches)
-- [gitlab_commits](#gitlab_commits)
-- [gitlab_diff](#gitlab_diff)
-- [gitlab_freads](#gitlab_freads)
-- [gitlab_projects](#gitlab_projects)
-- [gitlab_tags](#gitlab_tags)
-- [gitlab_walk](#gitlab_walk)
+- [gitlab_branches: Получить список веток в репозитории](#gitlab_branches)
+- [gitlab_commits: Получить список коммитов по ветке](#gitlab_commits)
+- [gitlab_diff: Получить список измененых файлов по SHA commit          tasks:int = None - кол-во потоков         git_url:str - Подключение к gitlab         git_token:str         git_repo:str - проект репозитория          Входная очередь массив sha или {"id":}         Результат массив новых файлов         ](#gitlab_diff)
+- [gitlab_freads: Получить содержимое файлов в репозитории](#gitlab_freads)
+- [gitlab_projects: Получить список проектов в репозитории](#gitlab_projects)
+- [gitlab_tags: Получить список тегов в репозитории](#gitlab_tags)
+- [gitlab_walk: Получить список файлов в репозитории](#gitlab_walk)
 
 ---
 

@@ -1,14 +1,14 @@
 # Сервисные операции (OtherOpers)
 
-- [error](#error)
-- [include](#include)
-- [info](#info)
-- [msleep](#msleep)
-- [opers](#opers)
-- [popers](#popers)
-- [send_errors](#send_errors)
-- [send_success](#send_success)
-- [sleep](#sleep)
+- [error: Вывести очередь в error поток](#error)
+- [include: Загрузить подпрограммы](#include)
+- [info: Вывести очередь в info поток](#info)
+- [msleep: Асинхронно заснуть на заданное кол-во секунд](#msleep)
+- [opers: Вывести словарь функций](#opers)
+- [popers: Подготовить документацию по функциям](#popers)
+- [send_errors: Отправить сообщение об ошибке](#send_errors)
+- [send_success: Отправить успешное сообщение](#send_success)
+- [sleep: Асинхронно заснуть на заданное кол-во секунд](#sleep)
 
 ---
 
@@ -107,7 +107,7 @@
 ## **opers**
 
 >
-> Вывести словарь функций
+> Вывести словарь функций.
 >
 > **Parameters**:
 >
@@ -120,7 +120,7 @@
 ## **popers**
 
 >
-> Подготовить документацию по функциям
+> Подготовить документацию по функциям.
 >
 > **Parameters**:
 >
