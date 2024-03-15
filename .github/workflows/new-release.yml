@@ -1,0 +1,16 @@
+name: Test, lint, release, deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  new-release:
+
+    name: start new release
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Get version and tag
+      run: |
+        echo "test"
