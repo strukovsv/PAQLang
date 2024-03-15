@@ -4,7 +4,7 @@ name: PyTest
 on:
 
   workflow_run:
-    workflows: ["Test, lint, release, deploy"]
+    workflows: ["new-release"]
     branches: [ master ]
     types: [completed]
   # push:
