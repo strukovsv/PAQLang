@@ -1,4 +1,4 @@
-name: Test, lint, release, deploy
+name: new-release
 
 on:
   workflow_dispatch:
