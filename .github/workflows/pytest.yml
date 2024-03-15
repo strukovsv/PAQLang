@@ -3,12 +3,16 @@ name: PyTest
 
 on:
 
-  push:
-    branches:
-      - main
-      - master
-    paths-ignore:
-    - '.github/workflows/*'
+  workflow_run:
+    workflows: ["Test, lint, release, deploy"]
+    branches: [ master ]
+    types: [completed]
+  # push:
+  #   branches:
+  #     - main
+  #     - master
+  #   paths-ignore:
+  #   - '.github/workflows/*'
 
 jobs:
   tests:

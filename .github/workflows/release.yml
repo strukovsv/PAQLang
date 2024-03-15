@@ -3,8 +3,7 @@ name: Release
 on:
 
   workflow_run:
-    # workflows: ["Lint-flake8", "PyTest"]
-    workflows: ["PyTest"]
+    workflows: ["Lint-flake8"]
     branches: [ master ]
     types: [completed]
 
