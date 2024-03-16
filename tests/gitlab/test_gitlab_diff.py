@@ -13,7 +13,7 @@ def test_3(main, request):
     - in: tests/2.133.0.0
     - gitlab_commits:
       - ~options
-      - since: "20240305"
+      - since: "2024-03-05T10:20:00"
     - gitlab_diff:
       - ~options
     - distinct

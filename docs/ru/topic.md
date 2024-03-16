@@ -1,9 +1,17 @@
 # Functions
 
+- [Github](githubopers.md)
+  - [github_branches: Получить список веток в репозитории](githubopers.md#github_branches)
+  - [github_commits: Получить список коммитов по ветке](githubopers.md#github_commits)
+  - [github_diff: Получить список измененых файлов по SHA commit](githubopers.md#github_diff)
+  - [github_freads: Получить содержимое файлов в репозитории](githubopers.md#github_freads)
+  - [github_projects: Получить список проектов в репозитории github](githubopers.md#github_projects)
+  - [github_tags: Получить список тегов в репозитории](githubopers.md#github_tags)
+  - [github_walk: Получить список файлов в репозитории](githubopers.md#github_walk)
 - [Gitlab](gitlabopers.md)
   - [gitlab_branches: Получить список веток в репозитории](gitlabopers.md#gitlab_branches)
   - [gitlab_commits: Получить список коммитов по ветке](gitlabopers.md#gitlab_commits)
-  - [gitlab_diff: Получить список измененых файлов по SHA commit          tasks:int = None - кол-во потоков         git_url:str - Подключение к gitlab         git_token:str         git_repo:str - проект репозитория          Входная очередь массив sha или {"id":}         Результат массив новых файлов         ](gitlabopers.md#gitlab_diff)
+  - [gitlab_diff: Получить список измененых файлов по SHA commit](gitlabopers.md#gitlab_diff)
   - [gitlab_freads: Получить содержимое файлов в репозитории](gitlabopers.md#gitlab_freads)
   - [gitlab_projects: Получить список проектов в репозитории](gitlabopers.md#gitlab_projects)
   - [gitlab_tags: Получить список тегов в репозитории](gitlabopers.md#gitlab_tags)
