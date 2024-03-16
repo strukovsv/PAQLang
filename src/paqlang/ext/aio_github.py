@@ -135,7 +135,6 @@ class GithubAsync:
     async def get_branches(self, param):
         result = []
         regex = param.get_string("regex")
-        logger.info(f'{param.list=}')
         for branch in await self.get_pages(
             resources={
                 "repos": True,
@@ -144,7 +143,6 @@ class GithubAsync:
                 "branches": True,
             },
         ):
-            logger.info(f'{branch["name"]=}')
             if regex and not re.match(regex, branch["name"]):
                 continue
             result.append(branch["name"])
