@@ -42,6 +42,7 @@ def test_2(main, request):
 """
     )
 
+
 def test_3(main, request):
     main(
         text="""
