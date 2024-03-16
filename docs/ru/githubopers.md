@@ -27,7 +27,7 @@
 >
 > - **regex**:str=None - regex шаблон отбора веток
 
-[test code: github_branches](/tests/main/test_github_branches.py)
+[test code: github_branches](/tests/github/test_github_branches.py)
 
 ---
 
@@ -50,7 +50,7 @@
 >
 > - **path**:str - только commit для файла
 
-[test code: github_commits](/tests/main/test_github_commits.py)
+[test code: github_commits](/tests/github/test_github_commits.py)
 
 ---
 
@@ -69,7 +69,7 @@
 >
 > - **git_repo**:str - проект репозитория
 
-[test code: github_diff](/tests/main/test_github_diff.py)
+[test code: github_diff](/tests/github/test_github_diff.py)
 
 ---
 
@@ -90,7 +90,7 @@
 >
 > - **git_branch**:str - ветка
 
-[test code: github_freads](/tests/main/test_github_freads.py)
+[test code: github_freads](/tests/github/test_github_freads.py)
 
 ---
 
@@ -107,7 +107,7 @@
 >
 > - **regex**:str=None - regex шаблон отбора веток
 
-[test code: github_projects](/tests/main/test_github_projects.py)
+[test code: github_projects](/tests/github/test_github_projects.py)
 
 ---
 
@@ -128,7 +128,7 @@
 >
 > - **regex**:str = None - regex шаблон отбора тегов
 
-[test code: github_tags](/tests/main/test_github_tags.py)
+[test code: github_tags](/tests/github/test_github_tags.py)
 
 ---
 
@@ -151,4 +151,4 @@
 >
 > - **regex:str**=None - regex шаблон отбора файлов
 
-[test code: github_walk](/tests/main/test_github_walk.py)
+[test code: github_walk](/tests/github/test_github_walk.py)
