@@ -176,6 +176,8 @@ class OtherOpers:
                     path2 = "oracle"
                 elif id == "gitlabopers":
                     path2 = "gitlab"
+                elif id == "githubopers":
+                    path2 = "github"
                 else:
                     path2 = "main"
                 test_path = f"/tests/{path2}/test_{oper_name}.py"
