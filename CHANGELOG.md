@@ -1,3 +1,55 @@
+# [1.3.0](https://github.com/strukovsv/PAQLang/compare/v1.2.2...v1.3.0) (2024-03-16)
+
+
+### chore
+
+* ошибка стиля flake8 ([4480b82](https://github.com/strukovsv/PAQLang/commit/4480b82817eed120f9b7e057a76a17e4f810fe86))
+
+### ci
+
+* action  последовательное выполнение ([0d1b265](https://github.com/strukovsv/PAQLang/commit/0d1b2657c3cab6fa49e80772bd7bdee9d046fec0))
+* line actions ([30a5904](https://github.com/strukovsv/PAQLang/commit/30a5904af42020f4bce99a5590d437033a2f4349))
+* test error ([18c5956](https://github.com/strukovsv/PAQLang/commit/18c5956c87fc96ec8fb26f37bc4aa697cc912d56))
+* test failure ([367c88a](https://github.com/strukovsv/PAQLang/commit/367c88a8e92ad3377a298618937f3b81c92df93b))
+* test failure ([8524513](https://github.com/strukovsv/PAQLang/commit/8524513c65cfc874d26169e3333b8fefa0d4a240))
+* test success ([bda12ff](https://github.com/strukovsv/PAQLang/commit/bda12ff74f334b5323d66630222a460a317e34a9))
+* test success ([a6f18d4](https://github.com/strukovsv/PAQLang/commit/a6f18d482448b818d93b463dd4e3d523f5418547))
+* Update .releaserc.json ([5842ffa](https://github.com/strukovsv/PAQLang/commit/5842ffa7e252e90860c38529d0a25b41f9cda6df))
+* Update lint-flake8.yml ([1c00fe2](https://github.com/strukovsv/PAQLang/commit/1c00fe23453bbf364575ed774d0bbc08b98e8755))
+* Update pytest.yml ([4ef28e8](https://github.com/strukovsv/PAQLang/commit/4ef28e8ebc6e21272461370a9922a5b54da32b51))
+* Update release.yml ([a015b11](https://github.com/strukovsv/PAQLang/commit/a015b114a1e570a29b0dd4ac0780cfd4adeb6da2))
+* Update release.yml ([ba20996](https://github.com/strukovsv/PAQLang/commit/ba209966c6746ccd301afe57b986a7538e601d8a))
+* Update release.yml ([de5699f](https://github.com/strukovsv/PAQLang/commit/de5699febede1c260ee81cd9d9a9b809d16aaa0f))
+* вернул steps ([9da4334](https://github.com/strukovsv/PAQLang/commit/9da4334c67bb77054932c33cd4e67199454c0706))
+* параллельное выполнение тестов и проверок перед build ([06c9d8c](https://github.com/strukovsv/PAQLang/commit/06c9d8c614c47d0027614f050c819152921379e0))
+* поменял name в actions ([cea2234](https://github.com/strukovsv/PAQLang/commit/cea2234610ac641960acdca5ff1c1627a2d407b9))
+* релиз пока оставим только от PyTest. lint не останавливает релиз ([c517e70](https://github.com/strukovsv/PAQLang/commit/c517e70e2c53ca47050fac33b61b358db8eae87a))
+* сделал test ошибочным для проверки ([4894198](https://github.com/strukovsv/PAQLang/commit/4894198a2b87a2033c807dd3de892d1fd6ba4540))
+* убрал steps ([0a5bc51](https://github.com/strukovsv/PAQLang/commit/0a5bc511720767427b150de432beb521688e46e5))
+
+### docs
+
+* Update README.md ([b22cefd](https://github.com/strukovsv/PAQLang/commit/b22cefdeebef7a5006d794941affe80dd7edadb2))
+* добавить наименование процедуры в оглавление ([7ea3eba](https://github.com/strukovsv/PAQLang/commit/7ea3eba2215704ab5b74309c47b9a61631ac2a29))
+* значительно подправил документацию по функциям ([11aba3a](https://github.com/strukovsv/PAQLang/commit/11aba3a8b9ec66f505a8bbea64a2db20e616ed24))
+* ошибки ссылок в топике еще подправил ([0ce3590](https://github.com/strukovsv/PAQLang/commit/0ce3590ed49f1d6f11b9ddf9133988d5add309fd))
+* подправил ссылки из оглавления на функции ([5e45eba](https://github.com/strukovsv/PAQLang/commit/5e45eba7ba1a56441cba04164944320f61df6e9d))
+* разбил функции по группам ([8d06e85](https://github.com/strukovsv/PAQLang/commit/8d06e85a665ab280aec761563c2324c3499d917a))
+
+### feat
+
+* api github projects ([d5af577](https://github.com/strukovsv/PAQLang/commit/d5af577e6cc3720b9c80866ba9bc53f35500e736))
+* github branches ([85372d4](https://github.com/strukovsv/PAQLang/commit/85372d4a97ece0e74c3d9faa0b1174483d5e43aa))
+* работа с api github тесты и документация ([32f74fd](https://github.com/strukovsv/PAQLang/commit/32f74fd4d8118cd0cb54cd9e9f50f02eea022e1b))
+
+### fix
+
+* ошибка работы с ISO форматом даты в атрибуте since api gitlab ([2175a00](https://github.com/strukovsv/PAQLang/commit/2175a0097c324a2394e5c1f6d62e3fcf1b1e7f54))
+
+### test
+
+* bugfix test_distinct ([3be0c91](https://github.com/strukovsv/PAQLang/commit/3be0c9132cd0455e5b71b5ba349bb31856e5fed4))
+
 ## [1.2.2](https://github.com/strukovsv/PAQLang/compare/v1.2.1...v1.2.2) (2024-03-13)
 
 
