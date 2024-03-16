@@ -2,7 +2,7 @@ import logging
 import re
 import urllib
 import codecs
-from datetime import date
+import datetime
 
 import httpx
 import chardet
@@ -211,7 +211,9 @@ class GitlabAsync:
             resources={"project_id": self.project["id"], "commits": True},
             ref_name=branch,
             since=(
-                date.fromisoformat(param.get_string("since")).isoformat()
+                datetime.datetime.fromisoformat(
+                    param.get_string("since")
+                ).isoformat()
                 if param.get_string("since")
                 else None
             ),
