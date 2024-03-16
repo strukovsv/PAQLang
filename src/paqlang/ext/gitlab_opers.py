@@ -159,16 +159,13 @@ class GitlabOpers:
     async def multiple_gitlab_diff(
         pgm, param, p_queue, in_queue=None, out_queue=None
     ):
-        """Получить список измененых файлов по SHA commit
-
-        tasks:int = None - кол-во потоков
-        git_url:str - Подключение к gitlab
-        git_token:str
-        git_repo:str - проект репозитория
-
-        Входная очередь массив sha или {"id":}
-        Результат массив новых файлов
-        """
+        """Получить список измененых файлов по SHA commit.
+        Входная очередь массив sha или {"id":}.
+        Результат массив новых файлов.
+        * **tasks**:int = None - кол-во потоков
+        * **git_url**:str - Подключение к gitlab
+        * **git_token**:str
+        * **git_repo**:str - проект репозитория"""
         if len(in_queue):
             gl = await git_pool.get_project(param=param)
             while len(in_queue):

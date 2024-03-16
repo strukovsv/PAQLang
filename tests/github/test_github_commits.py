@@ -1,4 +1,4 @@
-def test_1(main):
+def test_1(main, request):
     main(
         text="""
 - options:
@@ -8,14 +8,20 @@ def test_1(main):
         git_token: ${GITHUB_TOKEN}
         git_repo: ${GITHUB_REPO}
 - stage:
-    - github_branches:
+
+    - in: master
+    - github_commits:
       - ~options
-    - print: branches
+      - since: "20240306"
+    - attr:
+      - authored_date
+      - last_message
+    - print
 """
     )
 
 
-def test_2(main):
+def test_2(main, request):
     main(
         text="""
 - options:
@@ -25,15 +31,18 @@ def test_2(main):
         git_token: ${GITHUB_TOKEN}
         git_repo: ${GITHUB_REPO}
 - stage:
-    - github_branches:
+    - in: master
+    - github_commits:
       - ~options
-      - regex: 'feat/.*'
-    - print: branches
+      - until: "20240306"
+    - attr:
+      - authored_date
+      - last_message
+    - print
 """
     )
 
-
-def test_3(main):
+def test_3(main, request):
     main(
         text="""
 - options:
@@ -43,9 +52,13 @@ def test_3(main):
         git_token: ${GITHUB_TOKEN}
         git_repo: ${GITHUB_REPO}
 - stage:
-    - github_branches:
+    - in: master
+    - github_commits:
       - ~options
-      - search: master
-    - print: branches
+      - path: ".github/workflows/pytest.yml"
+    - attr:
+      - authored_date
+      - last_message
+    - print
 """
     )

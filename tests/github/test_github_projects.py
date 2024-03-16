@@ -18,7 +18,7 @@ def test_1(main):
     assert len(pgm.queue) > 1
 
 
-def test_3(main):
+def test_2(main):
     main(
         text="""
 - options:

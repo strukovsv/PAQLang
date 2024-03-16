@@ -9,6 +9,7 @@ from paqlang.program import pgm  # noqa
 
 from paqlang.ext.oracle_opers import OracleOpers  # noqa
 from paqlang.ext.gitlab_opers import GitlabOpers  # noqa
+from paqlang.ext.github_opers import GithubOpers  # noqa
 
 
 @pytest.fixture()
@@ -20,7 +21,7 @@ def main():
         return pgm(
             pgm_code=js or text,
             pgm_libs=None,
-            in_classes=[OracleOpers, GitlabOpers],
+            in_classes=[OracleOpers, GitlabOpers, GithubOpers],
             datas=datas,
             request=request,
         )

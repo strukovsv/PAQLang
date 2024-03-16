@@ -8,9 +8,14 @@ def test_1(main):
         git_token: ${GITHUB_TOKEN}
         git_repo: ${GITHUB_REPO}
 - stage:
-    - github_branches:
+    - in:
+      - ".github"
+      - "docs"
+    - github_walk:
       - ~options
-    - print: branches
+      - git_branch: master
+    - attr: path
+    - print
 """
     )
 
@@ -25,10 +30,13 @@ def test_2(main):
         git_token: ${GITHUB_TOKEN}
         git_repo: ${GITHUB_REPO}
 - stage:
-    - github_branches:
+    - in:
+      - ""
+    - github_walk:
       - ~options
-      - regex: 'feat/.*'
-    - print: branches
+      - git_branch: master
+    - attr: path
+    - print
 """
     )
 
@@ -43,9 +51,33 @@ def test_3(main):
         git_token: ${GITHUB_TOKEN}
         git_repo: ${GITHUB_REPO}
 - stage:
-    - github_branches:
+    - in: "/"
+    - github_walk:
       - ~options
-      - search: master
-    - print: branches
+      - git_branch: master
+    - attr: path
+    - print
+"""
+    )
+
+
+def test_4(main):
+    main(
+        text="""
+- options:
+    - in:
+        # Подключение к github
+        git_owner: ${GITHUB_OWNER}
+        git_token: ${GITHUB_TOKEN}
+        git_repo: ${GITHUB_REPO}
+- stage:
+    - in:
+      - ""
+    - github_walk:
+      - ~options
+      - git_branch: master
+      - regex: '.*workflow.*'
+    - attr: sha
+    - print
 """
     )

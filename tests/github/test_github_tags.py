@@ -8,9 +8,9 @@ def test_1(main):
         git_token: ${GITHUB_TOKEN}
         git_repo: ${GITHUB_REPO}
 - stage:
-    - github_branches:
+    - github_tags:
       - ~options
-    - print: branches
+    - print: tags
 """
     )
 
@@ -25,10 +25,10 @@ def test_2(main):
         git_token: ${GITHUB_TOKEN}
         git_repo: ${GITHUB_REPO}
 - stage:
-    - github_branches:
+    - github_tags:
       - ~options
-      - regex: 'feat/.*'
-    - print: branches
+      - search: v1.0.1
+    - print: tag v1.0.1
 """
     )
 
@@ -43,9 +43,9 @@ def test_3(main):
         git_token: ${GITHUB_TOKEN}
         git_repo: ${GITHUB_REPO}
 - stage:
-    - github_branches:
+    - github_tags:
       - ~options
-      - search: master
-    - print: branches
+      - regex: '^.*0$'
+    - print: tag regex .*0
 """
     )

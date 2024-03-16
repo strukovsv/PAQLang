@@ -2,7 +2,7 @@
 
 - [gitlab_branches: Получить список веток в репозитории](#gitlab_branches)
 - [gitlab_commits: Получить список коммитов по ветке](#gitlab_commits)
-- [gitlab_diff: Получить список измененых файлов по SHA commit          tasks:int = None - кол-во потоков         git_url:str - Подключение к gitlab         git_token:str         git_repo:str - проект репозитория          Входная очередь массив sha или {"id":}         Результат массив новых файлов         ](#gitlab_diff)
+- [gitlab_diff: Получить список измененых файлов по SHA commit](#gitlab_diff)
 - [gitlab_freads: Получить содержимое файлов в репозитории](#gitlab_freads)
 - [gitlab_projects: Получить список проектов в репозитории](#gitlab_projects)
 - [gitlab_tags: Получить список тегов в репозитории](#gitlab_tags)
@@ -53,10 +53,17 @@
 ## **gitlab_diff**
 
 >
-> Получить список измененых файлов по SHA commit
->  tasks:int = None - кол-во потоков git_url:str - Подключение к gitlab git_token:str git_repo:str - проект репозитория
->  Входная очередь массив sha или {"id":} Результат массив новых файлов
-> 
+> Получить список измененых файлов по SHA commit. Входная очередь массив sha или {"id":}. Результат массив новых файлов.
+>
+> **Parameters**:
+>
+> - **tasks**:int = None - кол-во потоков
+>
+> - **git_url**:str - Подключение к gitlab
+>
+> - **git_token**:str
+>
+> - **git_repo**:str - проект репозитория
 
 [test code: gitlab_diff](/tests/gitlab/test_gitlab_diff.py)
 
