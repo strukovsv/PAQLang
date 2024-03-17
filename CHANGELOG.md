@@ -1,3 +1,10 @@
+# [2.0.0](https://github.com/strukovsv/PAQLang/compare/v1.4.0...v2.0.0) (2024-03-17)
+
+
+### breaking
+
+* добавил пакеты для git по умолчанию, oracle оставил optional ([87aaba6](https://github.com/strukovsv/PAQLang/commit/87aaba67df5b330c93bd5e9da817e3d115b815e7))
+
 # [1.4.0](https://github.com/strukovsv/PAQLang/compare/v1.3.0...v1.4.0) (2024-03-17)
 
 
