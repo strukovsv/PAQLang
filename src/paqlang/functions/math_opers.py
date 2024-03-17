@@ -1,6 +1,6 @@
 import logging
 
-from .util_opers import get_attr, get_condition
+from ..utils import get_attr, get_condition
 from ..param import Param
 from ..data import mems
 

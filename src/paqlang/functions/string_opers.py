@@ -1,7 +1,7 @@
 import logging
 import re
 
-from .util_opers import get_attr
+from ..utils import get_attr
 
 # Установить текущи логгер
 logger = logging.getLogger(__name__)

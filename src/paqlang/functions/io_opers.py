@@ -2,8 +2,7 @@ import logging
 
 import re
 import os
-from ..utils import aio_reads, get_json, get_json_data
-from .util_opers import get_attr
+from ..utils import aio_reads, get_json, get_json_data, get_attr
 
 from ..param import Param
 

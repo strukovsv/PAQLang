@@ -3,7 +3,7 @@ import logging
 import cx_Oracle_async  # noqa
 import cx_Oracle  # noqa
 
-from ..functions.util_opers import get_sql_text
+from ..utils import get_text
 
 logger = logging.getLogger(__name__)
 
@@ -62,7 +62,7 @@ class OracleOpers:
                         # Получить первое значение из очереди
                         # Получить текст запроса из файла,
                         # gitlab, github или из очереди
-                        (fname, sql) = await get_sql_text(
+                        (fname, sql) = await get_text(
                             in_queue.pop(0), param
                         )
                         if fetch == "all":

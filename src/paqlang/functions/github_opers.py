@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from .aio_github import git_pool
+from ..aio_github import git_pool
 
 import logging
 

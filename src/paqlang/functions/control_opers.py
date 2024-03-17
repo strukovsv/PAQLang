@@ -1,6 +1,6 @@
 import logging
 
-from .util_opers import coalesce, get_condition
+from ..utils import coalesce, get_condition
 
 # Установить текущи логгер
 logger = logging.getLogger(__name__)
