@@ -8,8 +8,6 @@ logging.getLogger("httpx").setLevel(logging.WARNING)
 from paqlang.program import pgm  # noqa
 from paqlang.utils import get_json  # noqa
 
-from paqlang.ext.github_opers import GithubOpers  # noqa
-
 
 @pytest.fixture()
 def main():
@@ -21,7 +19,7 @@ def main():
         return pgm(
             pgm_code=js,
             pgm_libs=None,
-            in_classes=[GithubOpers],
+            in_classes=[],
             datas=datas,
             request=request,
         )
