@@ -4,7 +4,8 @@ import cx_Oracle_async  # noqa
 import cx_Oracle  # noqa
 
 from paqlang.utils import aio_reads
-from .gitlab_opers import git_pool
+from .gitlab_opers import git_pool as gitlab_pool
+from .github_opers import git_pool as github_pool
 
 logger = logging.getLogger(__name__)
 
@@ -42,6 +43,50 @@ class Pool:
 pool = Pool()
 
 
+async def get_sql_text(file_name, param):
+    if "path" in param.dict:
+        path = param.get_string("path")
+        # Если path содержит, то сделать подстановку,
+        # иначе подставить имя файла как есть в очереди
+        fname = (
+            path.replace(":1", file_name)
+            if path and (":1" in path)
+            else file_name
+        )
+    else:
+        fname = file_name
+    if "git_url" in param.dict:
+        gl = await gitlab_pool.get_project(param=param)
+    elif "git_owner" in param.dict:
+        gl = await github_pool.get_project(param=param)
+    else:
+        gl = None
+    if gl:
+        # Работаем с gitlab
+        try:
+            # Прочитать файл из git, передаем имя файла
+            file = await gl.get_file(param, fname)
+        except Exception as e:
+            logger.error(f"get file: {fname} - {e}")
+            raise
+        # Содержимое файла
+        sql = file["text"]
+    else:
+        # Если задана атрибут path,
+        # то прочитать файл с локального диска
+        if "path" in param.dict:
+            # Возможность задать кодировку файла
+            encoding = param.get_string("encoding") or "utf-8"
+            # Прочитать содержимое файла
+            sql = await aio_reads(file_name=fname, encoding=encoding)
+        else:
+            # Запрос из потока, не из файла данных
+            fname = None
+            # В данном случае пришел текст
+            sql = file_name
+    return (fname, sql)
+
+
 class OracleOpers:
     """Oracle"""
 
@@ -55,57 +100,16 @@ class OracleOpers:
                 password=param.get_string("oracle_password"),
                 dsn=param.get_string("oracle_dsn"),
             )
-            # Если указано в параметрах подключение  gitlab,
-            # то подключиться к pool git
-            gl = (
-                await git_pool.get_project(param=param)
-                if "git_url" in param.dict
-                else None
-            )
             # Провалится до курсора
             async with oracle_pool.acquire() as connection:
                 async with connection.cursor() as cursor:
                     # Пока входная очередь запросов или файлов не пустая
                     while len(in_queue):
                         # Получить первое значение из очереди
-                        in_param = in_queue.pop(0)
-                        if gl:
-                            # Работаем с gitlab
-                            try:
-                                # Прочитать файл из git, передаем имя файла
-                                file = await gl.get_file(param, in_param)
-                            except Exception as e:
-                                logger.error(f"get file: {in_param} - {e}")
-                                raise
-                            # Имя файла
-                            fname = file["path"]
-                            # Содержимое файла
-                            sql = file["text"]
-                        else:
-                            # Если задана атрибут path,
-                            # то прочитать файл с локального диска
-                            if "path" in param.dict:
-                                # Возможность задать кодировку файла
-                                encoding = (
-                                    param.get_string("encoding") or "utf-8"
-                                )
-                                #
-                                path = param.get_string("path")
-                                # Если path содержит, то сделать подстановку,
-                                # иначе подставить имя файла как есть в очереди
-                                fname = (
-                                    path.replace(":1", in_param)
-                                    if path and (":1" in path)
-                                    else in_param
-                                )
-                                # Прочитать содержимое файла
-                                sql = await aio_reads(
-                                    file_name=fname, encoding=encoding
-                                )
-                            else:
-                                # Запрос из потока, не из файла данных
-                                fname = None
-                                sql = in_param
+                        # Получить текст запроса из файла, gitlab, github или из очереди
+                        (fname, sql) = await get_sql_text(
+                            in_queue.pop(0), param
+                        )
                         if fetch == "all":
                             # Получить все записи из запроса
                             await cursor.execute(sql)
@@ -138,7 +142,7 @@ class OracleOpers:
                                 # Разбить запрос на подзапросы
                                 # и выполнить каждый
                                 for code in split_blocks(sql):
-                                    logger.info(f"{code=}")
+                                    # logger.info(f"{code=}")
                                     await cursor.execute(code)
                                 # Подготовить dbms_output
                                 dbms_output = []
