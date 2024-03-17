@@ -1,3 +1,16 @@
+# [1.4.0](https://github.com/strukovsv/PAQLang/compare/v1.3.0...v1.4.0) (2024-03-17)
+
+
+### docs
+
+* подправил атрибуты для oracle ([222d3b5](https://github.com/strukovsv/PAQLang/commit/222d3b5e4ec5d7f13206dd067db8d3371a671f2a))
+* ссылки на тесты d github ([5840080](https://github.com/strukovsv/PAQLang/commit/58400803ebcacbe267df815ac62aaee011daf424))
+
+### feat
+
+* добавил github в oracle и вынес получение запроса в отдельную процедуру ([80944e2](https://github.com/strukovsv/PAQLang/commit/80944e22b27dcca2e67a08fc520c7468b2378831))
+* сделал отдельную функцию получение данных из файла и git ([762be9f](https://github.com/strukovsv/PAQLang/commit/762be9f098568288fa3dc88e557ed4ead908e5b6))
+
 # [1.3.0](https://github.com/strukovsv/PAQLang/compare/v1.2.2...v1.3.0) (2024-03-16)
 
 
