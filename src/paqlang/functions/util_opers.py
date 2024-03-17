@@ -1,4 +1,8 @@
 import logging
+from paqlang.utils import aio_reads
+
+from .aio_gitlab import git_pool as gitlab_pool
+from .aio_github import git_pool as github_pool
 
 # Установить текущи логгер
 logger = logging.getLogger(__name__)
@@ -71,3 +75,47 @@ def get_condition(test_value, param):
                 )
         return where
     return False
+
+
+async def get_sql_text(file_name, param):
+    if "path" in param.dict:
+        path = param.get_string("path")
+        # Если path содержит, то сделать подстановку,
+        # иначе подставить имя файла как есть в очереди
+        fname = (
+            path.replace(":1", file_name)
+            if path and (":1" in path)
+            else file_name
+        )
+    else:
+        fname = file_name
+    if "git_url" in param.dict:
+        gl = await gitlab_pool.get_project(param=param)
+    elif "git_owner" in param.dict:
+        gl = await github_pool.get_project(param=param)
+    else:
+        gl = None
+    if gl:
+        # Работаем с gitlab
+        try:
+            # Прочитать файл из git, передаем имя файла
+            file = await gl.get_file(param, fname)
+        except Exception as e:
+            logger.error(f"get file: {fname} - {e}")
+            raise
+        # Содержимое файла
+        sql = file["text"]
+    else:
+        # Если задана атрибут path,
+        # то прочитать файл с локального диска
+        if "path" in param.dict:
+            # Возможность задать кодировку файла
+            encoding = param.get_string("encoding") or "utf-8"
+            # Прочитать содержимое файла
+            sql = await aio_reads(file_name=fname, encoding=encoding)
+        else:
+            # Запрос из потока, не из файла данных
+            fname = None
+            # В данном случае пришел текст
+            sql = file_name
+    return (fname, sql)

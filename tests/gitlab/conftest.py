@@ -8,8 +8,6 @@ logging.getLogger("httpx").setLevel(logging.WARNING)
 from paqlang.program import pgm  # noqa
 from paqlang.utils import get_json  # noqa
 
-from paqlang.ext.gitlab_opers import GitlabOpers  # noqa
-
 
 @pytest.fixture()
 def arr_ints():
@@ -65,7 +63,7 @@ def main():
         return pgm(
             pgm_code=js,
             pgm_libs=None,
-            in_classes=[GitlabOpers],
+            in_classes=[],
             datas=datas,
             request=request,
         )

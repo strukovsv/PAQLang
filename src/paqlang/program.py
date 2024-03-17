@@ -16,6 +16,8 @@ from .functions.bool_opers import BoolOpers
 from .functions.control_opers import ControlOpers
 from .functions.io_opers import IoOpers
 from .functions.dict_opers import DictOpers
+from .functions.gitlab_opers import GitlabOpers
+from .functions.github_opers import GithubOpers
 
 # Установить текущи логгер
 logger = logging.getLogger(__name__)
@@ -60,6 +62,8 @@ class Pgm:
             IoOpers,
             BoolOpers,
             DictOpers,
+            GitlabOpers,
+            GithubOpers,
         ]:
             self.append_opers(in_class=cls)
 
