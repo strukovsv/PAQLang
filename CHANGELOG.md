@@ -1,3 +1,19 @@
+# [2.1.0](https://github.com/strukovsv/PAQLang/compare/v2.0.0...v2.1.0) (2024-03-18)
+
+
+### chore
+
+* оставил один файд utils. Перенес процедуры работы с git на верхний уровень ([1700dfc](https://github.com/strukovsv/PAQLang/commit/1700dfce32ce8962b022593376aa28b0962ee3b5))
+* убрал ошибки в документации по walk ([197fb7f](https://github.com/strukovsv/PAQLang/commit/197fb7f219e3dec83ca87aa0c5901ce3477fa576))
+
+### ci
+
+* добавил в pytest github тесты ([e70168c](https://github.com/strukovsv/PAQLang/commit/e70168c768e09b4ad7589795d076e476dc46f4f6))
+
+### feat
+
+* добавил в команды walk и freads работу с gitlab и github ([655c35e](https://github.com/strukovsv/PAQLang/commit/655c35ea97da1aae5612b1f0749a7dae7d702c86))
+
 # [2.0.0](https://github.com/strukovsv/PAQLang/compare/v1.4.0...v2.0.0) (2024-03-17)
 
 
