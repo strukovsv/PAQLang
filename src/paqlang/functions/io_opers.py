@@ -15,8 +15,7 @@ class IoOpers:
 
     async def single_walk(pgm, param, p_queue, in_queue=None, out_queue=None):
         """Получить рекурсивно список файлов в директории.
-        * **param**:str=None - начальный путь поиска файлов
-        * **path**:str=None - начальный путь поиска файлов
+        Входная очередь, содержит массив начальных маршрутов поиска.
         * **regex**:str=None - шаблон отбора файлов, если не задан,
         то найти все файлы"""
         regex = param.get_string("regex")
