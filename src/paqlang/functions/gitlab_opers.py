@@ -95,7 +95,10 @@ class GitlabOpers:
         * **git_url**:str - Подключение к gitlab
         * **git_token**:str
         * **git_repo**:str - проект репозитория
-        * **git_branch**:str - ветка"""
+        * **git_branch**:str - ветка
+        * **path**:str - если задан параметр,
+        то значение :1 заменяется на значение из очереди,
+        для получения имени файла"""
         if len(in_queue):
             gl = await git_pool.get_project(param=param)
             while len(in_queue):

@@ -6,9 +6,9 @@ def test_1(main):
         # Кол-во потоков обработки операций gitlab и oracle
         tasks: 10
         # Подключение к github
-        git_owner: ${GITHUB_OWNER}
-        git_token: ${GITHUB_TOKEN}
-        git_repo: ${GITHUB_REPO}
+        git_owner: ${MYGITHUB_OWNER}
+        git_token: ${MYGITHUB_TOKEN}
+        git_repo: ${MYGITHUB_REPO}
 - stage:
     - github_projects:
       - ~options
@@ -24,9 +24,9 @@ def test_2(main):
 - options:
     - in:
         # Подключение к gitub
-        git_owner: ${GITHUB_OWNER}
-        git_token: ${GITHUB_TOKEN}
-        git_repo: ${GITHUB_REPO}
+        git_owner: ${MYGITHUB_OWNER}
+        git_token: ${MYGITHUB_TOKEN}
+        git_repo: ${MYGITHUB_REPO}
 - stage:
     - github_projects:
       - ~options

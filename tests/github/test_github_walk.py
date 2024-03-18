@@ -4,9 +4,9 @@ def test_1(main):
 - options:
     - in:
         # Подключение к github
-        git_owner: ${GITHUB_OWNER}
-        git_token: ${GITHUB_TOKEN}
-        git_repo: ${GITHUB_REPO}
+        git_owner: ${MYGITHUB_OWNER}
+        git_token: ${MYGITHUB_TOKEN}
+        git_repo: ${MYGITHUB_REPO}
 - stage:
     - in:
       - ".github"
@@ -26,9 +26,9 @@ def test_2(main):
 - options:
     - in:
         # Подключение к github
-        git_owner: ${GITHUB_OWNER}
-        git_token: ${GITHUB_TOKEN}
-        git_repo: ${GITHUB_REPO}
+        git_owner: ${MYGITHUB_OWNER}
+        git_token: ${MYGITHUB_TOKEN}
+        git_repo: ${MYGITHUB_REPO}
 - stage:
     - in:
       - ""
@@ -47,9 +47,9 @@ def test_3(main):
 - options:
     - in:
         # Подключение к github
-        git_owner: ${GITHUB_OWNER}
-        git_token: ${GITHUB_TOKEN}
-        git_repo: ${GITHUB_REPO}
+        git_owner: ${MYGITHUB_OWNER}
+        git_token: ${MYGITHUB_TOKEN}
+        git_repo: ${MYGITHUB_REPO}
 - stage:
     - in: "/"
     - github_walk:
@@ -67,9 +67,9 @@ def test_4(main):
 - options:
     - in:
         # Подключение к github
-        git_owner: ${GITHUB_OWNER}
-        git_token: ${GITHUB_TOKEN}
-        git_repo: ${GITHUB_REPO}
+        git_owner: ${MYGITHUB_OWNER}
+        git_token: ${MYGITHUB_TOKEN}
+        git_repo: ${MYGITHUB_REPO}
 - stage:
     - in:
       - ""

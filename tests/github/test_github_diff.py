@@ -4,9 +4,9 @@ def test_3(main, request):
 - options:
     - in:
         # Подключение к github
-        git_owner: ${GITHUB_OWNER}
-        git_token: ${GITHUB_TOKEN}
-        git_repo: ${GITHUB_REPO}
+        git_owner: ${MYGITHUB_OWNER}
+        git_token: ${MYGITHUB_TOKEN}
+        git_repo: ${MYGITHUB_REPO}
 - stage:
     - in: master
     - github_commits:

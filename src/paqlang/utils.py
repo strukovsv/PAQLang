@@ -1,6 +1,7 @@
 import logging
 import json
 import os
+import re
 import errno
 import dataclasses
 import datetime
@@ -528,12 +529,15 @@ def get_condition(test_value, param):
     return False
 
 
-async def get_text(file_name, param):
-    """Получить содержимое файла с диска, gitlab или github."""
+async def get_text(file_name, param, is_file: int = 0):
+    """Получить содержимое файла с диска, gitlab или github.
+    param:dict - содержит атрибуты подключения
+    is_file - file_name содержит только имя файла,
+    иначе может содержать просто текст"""
     if "path" in param.dict:
         path = param.get_string("path")
-        # Если path содержит, то сделать подстановку,
-        # иначе подставить имя файла как есть в очереди
+        # Если path содержит :1, то сделать подстановку,
+        # иначе подставить имя файла как есть
         fname = (
             path.replace(":1", file_name)
             if path and (":1" in path)
@@ -542,10 +546,13 @@ async def get_text(file_name, param):
     else:
         fname = file_name
     if "git_url" in param.dict:
+        # То работаем с gitlab
         gl = await gitlab_pool.get_project(param=param)
     elif "git_owner" in param.dict:
+        # То работаем с github
         gl = await github_pool.get_project(param=param)
     else:
+        # Работаем с файлом
         gl = None
     if gl:
         # Работаем с gitlab
@@ -560,7 +567,7 @@ async def get_text(file_name, param):
     else:
         # Если задана атрибут path,
         # то прочитать файл с локального диска
-        if "path" in param.dict:
+        if is_file or "path" in param.dict:
             # Возможность задать кодировку файла
             encoding = param.get_string("encoding") or "utf-8"
             # Прочитать содержимое файла
@@ -571,3 +578,32 @@ async def get_text(file_name, param):
             # В данном случае пришел текст
             sql = file_name
     return (fname, sql)
+
+
+async def walk(path, param):
+    """Получить рекурсивно список файлов с диска,
+    gitlab или github.
+    param:dict - содержит атрибуты подключения"""
+    if "git_url" in param.dict:
+        # То работаем с gitlab
+        gl = await gitlab_pool.get_project(param=param)
+    elif "git_owner" in param.dict:
+        # То работаем с github
+        gl = await github_pool.get_project(param=param)
+    else:
+        # Работаем с файлом
+        files = []
+        regex = param.get_string("regex")
+        logger.info(f'{path=}')
+        for root, dirs, walk_files in os.walk(path):
+            for file_name in [
+                os.path.join(root, name) for name in walk_files
+            ]:
+                if regex and not re.match(regex, file_name):
+                    continue
+                files.append({
+                    "path": file_name,
+                    "name": os.path.basename(file_name)})
+        return files
+    # Работаем с git
+    return await gl.get_tree(param=param, path=path)

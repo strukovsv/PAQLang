@@ -6,9 +6,9 @@ def test_1(main, request):
         # Кол-во потоков обработки операций gitlab и oracle
         tasks: 10
         # Подключение к gitlab
-        git_url: ${GIT_URL}
-        git_token: ${GIT_TOKEN}
-        git_repo: ${GIT_REPO}
+        git_url: ${MYGITLAB_URL}
+        git_token: ${MYGITLAB_TOKEN}
+        git_repo: ${MYGITLAB_REPO}
 - stage:
     - gitlab_projects:
       - ~options
@@ -26,10 +26,10 @@ def test_2(main, request):
         # Кол-во потоков обработки операций gitlab и oracle
         tasks: 10
         # Подключение к gitlab
-        git_url: ${GIT_URL}
-        git_token: ${GIT_TOKEN}
+        git_url: ${MYGITLAB_URL}
+        git_token: ${MYGITLAB_TOKEN}
 - repo:
-  - in: ${GIT_REPO}
+  - in: ${MYGITLAB_REPO}
 - stage:
     - gitlab_projects:
       - ~options
@@ -48,8 +48,8 @@ def test_3(main, request):
         # Кол-во потоков обработки операций gitlab и oracle
         tasks: 10
         # Подключение к gitlab
-        git_url: ${GIT_URL}
-        git_token: ${GIT_TOKEN}
+        git_url: ${MYGITLAB_URL}
+        git_token: ${MYGITLAB_TOKEN}
 - stage:
     - gitlab_projects:
       - ~options
@@ -68,8 +68,8 @@ def test_4(main, request):
         # Кол-во потоков обработки операций gitlab и oracle
         tasks: 10
         # Подключение к gitlab
-        git_url: ${GIT_URL}
-        git_token: ${GIT_TOKEN}
+        git_url: ${MYGITLAB_URL}
+        git_token: ${MYGITLAB_TOKEN}
 - stage:
     - gitlab_projects:
       - ~options
