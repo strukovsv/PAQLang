@@ -85,6 +85,8 @@
 > - **git_repo**:str - проект репозитория
 >
 > - **git_branch**:str - ветка
+>
+> - **path**:str - если задан параметр, то значение :1 заменяется на значение из очереди, для получения имени файла
 
 [test code: gitlab_freads](/tests/gitlab/test_gitlab_freads.py)
 

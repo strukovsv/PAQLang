@@ -175,7 +175,7 @@ class GithubAsync:
             result.append(tag["name"])
         return result
 
-    async def get_tree(self, param, paths):
+    async def get_tree(self, param, path):
         result = []
         regex = param.get_string("regex")
         for files in await self.get_pages(
@@ -190,19 +190,17 @@ class GithubAsync:
             for file in files["tree"]:
                 if file["type"] == "tree":
                     continue
-                # Перебрать все маршруты
-                for test in paths:
-                    # Если пусть начинается с маршрута
-                    if file["path"].startswith("" if test == "/" else test):
-                        if regex and not re.match(regex, file["path"]):
-                            continue
-                        result.append(
-                            {
-                                "path": file["path"],
-                                "sha": file["sha"],
-                                "name": os.path.basename(file["path"]),
-                            }
-                        )
+                # Если пусть начинается с маршрута
+                if file["path"].startswith("" if path == "/" else path):
+                    if regex and not re.match(regex, file["path"]):
+                        continue
+                    result.append(
+                        {
+                            "path": file["path"],
+                            "sha": file["sha"],
+                            "name": os.path.basename(file["path"]),
+                        }
+                    )
         return result
 
     async def get_file(self, param, path):

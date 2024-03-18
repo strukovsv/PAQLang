@@ -1,8 +1,7 @@
 import logging
 
-import re
-import os
-from ..utils import aio_reads, get_json, get_json_data, get_attr
+from ..utils import get_json, get_json_data
+from ..utils import get_attr, get_text, walk
 
 from ..param import Param
 
@@ -17,41 +16,45 @@ class IoOpers:
         """Получить рекурсивно список файлов в директории.
         Входная очередь, содержит массив начальных маршрутов поиска.
         * **regex**:str=None - шаблон отбора файлов, если не задан,
-        то найти все файлы"""
-        regex = param.get_string("regex")
+        то найти все файлы
+        * **git_owner**:str - Подключение к github
+        * **git_url**:str - Подключение к gitlab
+        * **git_token**:str
+        * **git_repo**:str - проект репозитория
+        * **git_branch**:str - ветка"""
         while len(in_queue):
-            # Получить файл
-            path = in_queue.pop(0)
-            if isinstance(path, str):
-                for root, dirs, files in os.walk(path):
-                    for file_name in [
-                        os.path.join(root, name) for name in files
-                    ]:
-                        if regex and not re.match(regex, file_name):
-                            continue
-                        out_queue.append(file_name)
+            # Запросить список файлов
+            out_queue.extend(await walk(path=in_queue.pop(0), param=param))
         return ["success"]
 
     async def multiple_freads(
         pgm, param, p_queue, in_queue=None, out_queue=None
     ):
-        """Прочитать файл и положить содержимое в выходную очередь
-          {fname, text}. Кодировка для windows файлов cp1251
-        * **param**:str=None - задается кодировка файлов (по умолчанию utf-8)
+        """Прочитать файл и положить содержимое в выходную очередь.
+        Формат очереди {fname, text}.
+        Кодировка для файлов windows cp1251.
         * **encoding**:str=None - кодировка файла
         * **to_json**=None, если указан атрибут,
           то файл преобразовать в объект и вернуть как массив
         * **split**:str=None, если указан атрибут,
           то разбить текстовый файл на строки.
-          Если указан символ разбиения, то разбить соответственно ему."""
-        # Задать кодировку файла
-        encoding = param.get_string("encoding") or param.get_string()
+          Если указан символ разбиения, то разбить соответственно ему.
+        * **git_owner**:str - Подключение к gitlab.
+        * **git_url**:str - Подключение к gitlab.
+        * **git_token**:str - токен подключения.
+        * **git_repo**:str - проект репозитория.
+        * **git_branch**:str - ветка
+        * **path**:str - если задан параметр,
+        то значение :1 заменяется на значение из очереди,
+        для получения имени файла"""
         while len(in_queue):
             # Получить имя файла
             file_name = in_queue.pop(0)
             if isinstance(file_name, str):
-                # Асинхронно прочимтать файл
-                text = await aio_reads(file_name=file_name, encoding=encoding)
+                # Асинхронно прочимтать файл с диска или git
+                (fname, text) = await get_text(
+                    file_name=file_name, param=param, is_file=1
+                )
                 if "to_json" in param.dict:
                     # Положить объект в очереь
                     out_queue.extend(Param(get_json_data(text)).as_list())

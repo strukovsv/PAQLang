@@ -4,9 +4,9 @@ def test_1(main, request):
 - options:
     - in:
         # Подключение к gitlab
-        git_url: ${GIT_URL}
-        git_token: ${GIT_TOKEN}
-        git_repo: ${GIT_REPO}
+        git_url: ${MYGITLAB_URL}
+        git_token: ${MYGITLAB_TOKEN}
+        git_repo: ${MYGITLAB_REPO}
 - stage:
     - gitlab_branches:
       - ~options
@@ -23,9 +23,9 @@ def test_2(main, request):
 - options:
     - in:
         # Подключение к gitlab
-        git_url: ${GIT_URL}
-        git_token: ${GIT_TOKEN}
-        git_repo: ${GIT_REPO}
+        git_url: ${MYGITLAB_URL}
+        git_token: ${MYGITLAB_TOKEN}
+        git_repo: ${MYGITLAB_REPO}
 - stage:
     - gitlab_branches:
       - ~options
