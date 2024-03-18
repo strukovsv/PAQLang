@@ -35,3 +35,4 @@ jobs:
           pip install pytest
           cd src
           python -m pytest ../tests/main/test* --log-cli-level=INFO
+          python -m pytest ../tests/github/test* --log-cli-level=INFO
