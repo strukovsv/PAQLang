@@ -3,8 +3,9 @@
 Python Async Queue Language
 
 [![Super-Linter](https://github.com/strukovsv/PAQLang/actions/workflows/lint-flake8.yml/badge.svg)](https://github.com/marketplace/actions/python-flake8-lint)
-[![Pytest](https://github.com/strukovsv/PAQLang/actions/workflows/pytest.yml/badge.svg)](https://github.com/strukovsv/PAQLang/tree/master/tests/main)
-[![Release](https://github.com/strukovsv/PAQLang/actions/workflows/release.yml/badge.svg)](https://github.com/strukovsv/PAQLang/tree/master/CHANGELOG.md)
+[![Pytest](https://github.com/strukovsv/PAQLang/actions/workflows/pytest.yml/badge.svg)](https://github.com/strukovsv/PAQLang/actions/workflows/pytest.yml)
+[![Release](https://github.com/strukovsv/PAQLang/actions/workflows/release.yml/badge.svg?branch=master)](https://github.com/strukovsv/PAQLang/actions/workflows/release.yml)
+[![Upload Python Package](https://github.com/strukovsv/PAQLang/actions/workflows/python-publish.yml/badge.svg?branch=master)](https://github.com/strukovsv/PAQLang/actions/workflows/python-publish.yml)
 
 ## Содержание
 
