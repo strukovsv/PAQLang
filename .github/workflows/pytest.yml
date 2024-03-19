@@ -31,6 +31,10 @@ jobs:
       - name: Test with pytest
         env:
           PYTHONPATH: "./src"
+          MYGITHUB_OWNER: "strukovsv"
+          MYGITHUB_TOKEN: ${{ secrets.MYGITHUB_TOKEN }}
+          MYGITHUB_REPO: "PAQLang" 
+          MYGITHUB_BRANCH: "master"
         run: |
           pip install pytest
           cd src
